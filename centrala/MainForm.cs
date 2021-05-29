@@ -37,5 +37,10 @@ namespace centrala
         {
             Console.WriteLine(serial);
         }
+
+        private void zakończToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
