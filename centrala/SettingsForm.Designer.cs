@@ -32,15 +32,15 @@ namespace centrala
             this.PortComboBox = new System.Windows.Forms.ComboBox();
             this.PortLabel = new System.Windows.Forms.Label();
             this.SerialSettingsBox = new System.Windows.Forms.GroupBox();
-            this.BaudRateLabel = new System.Windows.Forms.Label();
-            this.BaudRateComboBox = new System.Windows.Forms.ComboBox();
-            this.ParityLabel = new System.Windows.Forms.Label();
-            this.ParityComboBox = new System.Windows.Forms.ComboBox();
-            this.DataBitsLabel = new System.Windows.Forms.Label();
-            this.DataBitsComboBox = new System.Windows.Forms.ComboBox();
-            this.StopBitsLabel = new System.Windows.Forms.Label();
-            this.StopBitsComboBox = new System.Windows.Forms.ComboBox();
             this.SaveSettingsButton = new System.Windows.Forms.Button();
+            this.StopBitsLabel = new System.Windows.Forms.Label();
+            this.DataBitsLabel = new System.Windows.Forms.Label();
+            this.ParityLabel = new System.Windows.Forms.Label();
+            this.BaudRateLabel = new System.Windows.Forms.Label();
+            this.StopBitsComboBox = new System.Windows.Forms.ComboBox();
+            this.DataBitsComboBox = new System.Windows.Forms.ComboBox();
+            this.ParityComboBox = new System.Windows.Forms.ComboBox();
+            this.BaudRateComboBox = new System.Windows.Forms.ComboBox();
             this.SerialSettingsBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +63,7 @@ namespace centrala
             // 
             // SerialSettingsBox
             // 
+            this.SerialSettingsBox.BackColor = System.Drawing.SystemColors.Control;
             this.SerialSettingsBox.Controls.Add(this.SaveSettingsButton);
             this.SerialSettingsBox.Controls.Add(this.StopBitsLabel);
             this.SerialSettingsBox.Controls.Add(this.DataBitsLabel);
@@ -81,56 +82,15 @@ namespace centrala
             this.SerialSettingsBox.TabStop = false;
             this.SerialSettingsBox.Text = "Serial";
             // 
-            // BaudRateLabel
+            // SaveSettingsButton
             // 
-            this.BaudRateLabel.AutoSize = true;
-            this.BaudRateLabel.Location = new System.Drawing.Point(15, 55);
-            this.BaudRateLabel.Name = "BaudRateLabel";
-            this.BaudRateLabel.Size = new System.Drawing.Size(56, 13);
-            this.BaudRateLabel.TabIndex = 1;
-            this.BaudRateLabel.Text = "Baud rate:";
-            // 
-            // BaudRateComboBox
-            // 
-            this.BaudRateComboBox.FormattingEnabled = true;
-            this.BaudRateComboBox.Location = new System.Drawing.Point(116, 52);
-            this.BaudRateComboBox.Name = "BaudRateComboBox";
-            this.BaudRateComboBox.Size = new System.Drawing.Size(121, 21);
-            this.BaudRateComboBox.TabIndex = 0;
-            // 
-            // ParityLabel
-            // 
-            this.ParityLabel.AutoSize = true;
-            this.ParityLabel.Location = new System.Drawing.Point(15, 85);
-            this.ParityLabel.Name = "ParityLabel";
-            this.ParityLabel.Size = new System.Drawing.Size(80, 13);
-            this.ParityLabel.TabIndex = 1;
-            this.ParityLabel.Text = "Bit parzystości.:";
-            // 
-            // ParityComboBox
-            // 
-            this.ParityComboBox.FormattingEnabled = true;
-            this.ParityComboBox.Location = new System.Drawing.Point(116, 82);
-            this.ParityComboBox.Name = "ParityComboBox";
-            this.ParityComboBox.Size = new System.Drawing.Size(121, 21);
-            this.ParityComboBox.TabIndex = 0;
-            // 
-            // DataBitsLabel
-            // 
-            this.DataBitsLabel.AutoSize = true;
-            this.DataBitsLabel.Location = new System.Drawing.Point(15, 115);
-            this.DataBitsLabel.Name = "DataBitsLabel";
-            this.DataBitsLabel.Size = new System.Drawing.Size(65, 13);
-            this.DataBitsLabel.TabIndex = 1;
-            this.DataBitsLabel.Text = "Bity danych:";
-            // 
-            // DataBitsComboBox
-            // 
-            this.DataBitsComboBox.FormattingEnabled = true;
-            this.DataBitsComboBox.Location = new System.Drawing.Point(116, 112);
-            this.DataBitsComboBox.Name = "DataBitsComboBox";
-            this.DataBitsComboBox.Size = new System.Drawing.Size(121, 21);
-            this.DataBitsComboBox.TabIndex = 0;
+            this.SaveSettingsButton.Location = new System.Drawing.Point(162, 181);
+            this.SaveSettingsButton.Name = "SaveSettingsButton";
+            this.SaveSettingsButton.Size = new System.Drawing.Size(75, 23);
+            this.SaveSettingsButton.TabIndex = 2;
+            this.SaveSettingsButton.Text = "Zapisz";
+            this.SaveSettingsButton.UseVisualStyleBackColor = true;
+            this.SaveSettingsButton.Click += new System.EventHandler(this.SaveSettingsButton_Click);
             // 
             // StopBitsLabel
             // 
@@ -141,6 +101,33 @@ namespace centrala
             this.StopBitsLabel.TabIndex = 1;
             this.StopBitsLabel.Text = "Bity stopu:";
             // 
+            // DataBitsLabel
+            // 
+            this.DataBitsLabel.AutoSize = true;
+            this.DataBitsLabel.Location = new System.Drawing.Point(15, 115);
+            this.DataBitsLabel.Name = "DataBitsLabel";
+            this.DataBitsLabel.Size = new System.Drawing.Size(65, 13);
+            this.DataBitsLabel.TabIndex = 1;
+            this.DataBitsLabel.Text = "Bity danych:";
+            // 
+            // ParityLabel
+            // 
+            this.ParityLabel.AutoSize = true;
+            this.ParityLabel.Location = new System.Drawing.Point(15, 85);
+            this.ParityLabel.Name = "ParityLabel";
+            this.ParityLabel.Size = new System.Drawing.Size(80, 13);
+            this.ParityLabel.TabIndex = 1;
+            this.ParityLabel.Text = "Bit parzystości.:";
+            // 
+            // BaudRateLabel
+            // 
+            this.BaudRateLabel.AutoSize = true;
+            this.BaudRateLabel.Location = new System.Drawing.Point(15, 55);
+            this.BaudRateLabel.Name = "BaudRateLabel";
+            this.BaudRateLabel.Size = new System.Drawing.Size(56, 13);
+            this.BaudRateLabel.TabIndex = 1;
+            this.BaudRateLabel.Text = "Baud rate:";
+            // 
             // StopBitsComboBox
             // 
             this.StopBitsComboBox.FormattingEnabled = true;
@@ -149,15 +136,29 @@ namespace centrala
             this.StopBitsComboBox.Size = new System.Drawing.Size(121, 21);
             this.StopBitsComboBox.TabIndex = 0;
             // 
-            // SaveSettingsButton
+            // DataBitsComboBox
             // 
-            this.SaveSettingsButton.Location = new System.Drawing.Point(162, 181);
-            this.SaveSettingsButton.Name = "SaveSettingsButton";
-            this.SaveSettingsButton.Size = new System.Drawing.Size(75, 23);
-            this.SaveSettingsButton.TabIndex = 2;
-            this.SaveSettingsButton.Text = "Zapisz";
-            this.SaveSettingsButton.UseVisualStyleBackColor = true;
-            this.SaveSettingsButton.Click += new System.EventHandler(this.SaveSettingsButton_Click);
+            this.DataBitsComboBox.FormattingEnabled = true;
+            this.DataBitsComboBox.Location = new System.Drawing.Point(116, 112);
+            this.DataBitsComboBox.Name = "DataBitsComboBox";
+            this.DataBitsComboBox.Size = new System.Drawing.Size(121, 21);
+            this.DataBitsComboBox.TabIndex = 0;
+            // 
+            // ParityComboBox
+            // 
+            this.ParityComboBox.FormattingEnabled = true;
+            this.ParityComboBox.Location = new System.Drawing.Point(116, 82);
+            this.ParityComboBox.Name = "ParityComboBox";
+            this.ParityComboBox.Size = new System.Drawing.Size(121, 21);
+            this.ParityComboBox.TabIndex = 0;
+            // 
+            // BaudRateComboBox
+            // 
+            this.BaudRateComboBox.FormattingEnabled = true;
+            this.BaudRateComboBox.Location = new System.Drawing.Point(116, 52);
+            this.BaudRateComboBox.Name = "BaudRateComboBox";
+            this.BaudRateComboBox.Size = new System.Drawing.Size(121, 21);
+            this.BaudRateComboBox.TabIndex = 0;
             // 
             // SettingsForm
             // 

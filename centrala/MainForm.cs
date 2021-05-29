@@ -22,7 +22,7 @@ namespace centrala
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            testLabel.Text = "test";
+            //testLabel.Text = "test";
         }
 
         private void ustawieniaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -49,6 +49,11 @@ namespace centrala
             {
                 aboutForm.ShowDialog(this);
             }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
