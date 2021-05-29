@@ -13,7 +13,7 @@ namespace centrala
 {
     public partial class MainForm : Form
     {
-        protected internal SerialConnection serial = new SerialConnection();
+        protected internal SerialConnection serial; 
 
         public MainForm()
         {
@@ -22,6 +22,7 @@ namespace centrala
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            serial = new SerialConnection(this);
             //testLabel.Text = "test";
         }
 
@@ -49,11 +50,6 @@ namespace centrala
             {
                 aboutForm.ShowDialog(this);
             }
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }

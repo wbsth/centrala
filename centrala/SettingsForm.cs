@@ -13,7 +13,7 @@ namespace centrala
 {
     public partial class SettingsForm : Form
     {
-        List<int> baudRates = new List<int>
+        public static List<int> baudRatesList = new List<int>
         {
             75,
             110,
@@ -34,7 +34,7 @@ namespace centrala
             115200,
             128000
         };
-        List<KeyValuePair<Parity, string>> parityTypes = new List<KeyValuePair<Parity, string>>
+        public static List<KeyValuePair<Parity, string>> parityTypesList = new List<KeyValuePair<Parity, string>>
         {
             new KeyValuePair<Parity, string>(Parity.Even, "Parzyste"),
             new KeyValuePair<Parity, string>(Parity.Mark, "Znacznik"),
@@ -42,13 +42,14 @@ namespace centrala
             new KeyValuePair<Parity, string>(Parity.Odd, "Nieparzyste"),
             new KeyValuePair<Parity, string>(Parity.Space, "Spacja"),
         };
-        List<double> stopBits = new List<double>
+        public static List<KeyValuePair<StopBits, string>> stopBitsList = new List<KeyValuePair<StopBits, string>>
         {
-            1,
-            1.5,
-            2
+            new KeyValuePair<StopBits, string>(StopBits.None, "0"),
+            new KeyValuePair<StopBits, string>(StopBits.One, "1"),
+            new KeyValuePair<StopBits, string>(StopBits.OnePointFive, "1.5"),
+            new KeyValuePair<StopBits, string>(StopBits.Two, "2")
         };
-        List<int> dataBits = new List<int>
+        public static List<int> dataBitsList = new List<int>
         {
             4,
             5,
@@ -67,18 +68,18 @@ namespace centrala
 
             PortComboBox.DataSource = SerialPort.GetPortNames();
 
-            BaudRateComboBox.DataSource = baudRates;
-            BaudRateComboBox.SelectedIndex = baudRates.IndexOf(9600);
+            BaudRateComboBox.DataSource = baudRatesList;
+            BaudRateComboBox.SelectedIndex = baudRatesList.IndexOf(9600);
 
-            ParityComboBox.DataSource = parityTypes;
+            ParityComboBox.DataSource = parityTypesList;
             ParityComboBox.ValueMember = "Key";
             ParityComboBox.DisplayMember = "Value";
             ParityComboBox.SelectedIndex = 2;
 
-            StopBitsComboBox.DataSource = stopBits;
+            StopBitsComboBox.DataSource = stopBitsList;
 
-            DataBitsComboBox.DataSource = dataBits;
-            DataBitsComboBox.SelectedIndex = dataBits.IndexOf(8);
+            DataBitsComboBox.DataSource = dataBitsList;
+            DataBitsComboBox.SelectedIndex = dataBitsList.IndexOf(8);
         }
 
         private void SaveSettingsButton_Click(object sender, EventArgs e)
@@ -87,7 +88,7 @@ namespace centrala
             ((MainForm)Owner).serial.baudRate = (int)BaudRateComboBox.SelectedValue;
             ((MainForm)Owner).serial.paritySetting = (Parity)ParityComboBox.SelectedValue;
             ((MainForm)Owner).serial.dataBits = (int)DataBitsComboBox.SelectedValue;
-            ((MainForm)Owner).serial.stopBits = (double)StopBitsComboBox.SelectedValue;
+            ((MainForm)Owner).serial.stopBits = (StopBits)StopBitsComboBox.SelectedValue;
             MessageBox.Show("Zapisano");
         }
 
