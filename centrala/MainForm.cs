@@ -42,5 +42,13 @@ namespace centrala
         {
             Application.Exit();
         }
+
+        private void oProgramieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (AboutForm aboutForm = new AboutForm())
+            {
+                aboutForm.ShowDialog(this);
+            }
+        }
     }
 }
