@@ -23,7 +23,6 @@ namespace centrala
         private void MainForm_Load(object sender, EventArgs e)
         {
             serial = new SerialConnection(this);
-            //testLabel.Text = "test";
         }
 
         private void ustawieniaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -34,22 +33,17 @@ namespace centrala
             }
         }
 
-        private void testLabel_Click(object sender, EventArgs e)
-        {
-            Console.WriteLine(serial);
-        }
-
-        private void zakończToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void oProgramieToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (AboutForm aboutForm = new AboutForm())
             {
                 aboutForm.ShowDialog(this);
             }
+        }
+
+        private void zakończToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

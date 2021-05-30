@@ -128,12 +128,11 @@ namespace centrala
             this.connectionInfoBox.Controls.Add(this.label3);
             this.connectionInfoBox.Controls.Add(this.pictureBox2);
             this.connectionInfoBox.Controls.Add(this.statusPicture);
-            this.connectionInfoBox.Controls.Add(this.connectButton);
             this.connectionInfoBox.Controls.Add(this.portValue);
             this.connectionInfoBox.Controls.Add(this.portLabel);
             this.connectionInfoBox.Location = new System.Drawing.Point(12, 29);
             this.connectionInfoBox.Name = "connectionInfoBox";
-            this.connectionInfoBox.Size = new System.Drawing.Size(141, 117);
+            this.connectionInfoBox.Size = new System.Drawing.Size(141, 92);
             this.connectionInfoBox.TabIndex = 2;
             this.connectionInfoBox.TabStop = false;
             this.connectionInfoBox.Text = "Połączenie";
@@ -179,9 +178,9 @@ namespace centrala
             // connectButton
             // 
             this.connectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.connectButton.Location = new System.Drawing.Point(10, 88);
+            this.connectButton.Location = new System.Drawing.Point(12, 326);
             this.connectButton.Name = "connectButton";
-            this.connectButton.Size = new System.Drawing.Size(75, 23);
+            this.connectButton.Size = new System.Drawing.Size(141, 23);
             this.connectButton.TabIndex = 2;
             this.connectButton.Text = "Połącz";
             this.connectButton.UseVisualStyleBackColor = true;
@@ -207,7 +206,7 @@ namespace centrala
             // chooseDataGroup
             // 
             this.chooseDataGroup.Controls.Add(this.checkedListBox1);
-            this.chooseDataGroup.Location = new System.Drawing.Point(12, 152);
+            this.chooseDataGroup.Location = new System.Drawing.Point(12, 127);
             this.chooseDataGroup.Name = "chooseDataGroup";
             this.chooseDataGroup.Size = new System.Drawing.Size(141, 111);
             this.chooseDataGroup.TabIndex = 3;
@@ -230,7 +229,7 @@ namespace centrala
             this.logGroup.Controls.Add(this.label1);
             this.logGroup.Controls.Add(this.numericUpDown1);
             this.logGroup.Controls.Add(this.checkBox1);
-            this.logGroup.Location = new System.Drawing.Point(12, 269);
+            this.logGroup.Location = new System.Drawing.Point(12, 244);
             this.logGroup.Name = "logGroup";
             this.logGroup.Size = new System.Drawing.Size(141, 76);
             this.logGroup.TabIndex = 4;
@@ -282,6 +281,7 @@ namespace centrala
             this.Controls.Add(this.chooseDataGroup);
             this.Controls.Add(this.connectionInfoBox);
             this.Controls.Add(this.mainMenuStrip);
+            this.Controls.Add(this.connectButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mainMenuStrip;
             this.Name = "MainForm";
