@@ -52,6 +52,7 @@
     <Compile Include="AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Logs.cs" />
     <Compile Include="SerialConnection.cs" />
     <Compile Include="SettingsForm.cs">
       <SubType>Form</SubType>

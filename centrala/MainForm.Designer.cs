@@ -42,16 +42,18 @@ namespace centrala
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.statusPicture = new System.Windows.Forms.PictureBox();
-            this.connectButton = new System.Windows.Forms.Button();
             this.portValue = new System.Windows.Forms.Label();
             this.portLabel = new System.Windows.Forms.Label();
+            this.connectButton = new System.Windows.Forms.Button();
             this.chooseDataGroup = new System.Windows.Forms.GroupBox();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.logGroup = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.valuesGroup = new System.Windows.Forms.GroupBox();
+            this.graphBox = new System.Windows.Forms.GroupBox();
             this.mainMenuStrip.SuspendLayout();
             this.connectionInfoBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -69,7 +71,7 @@ namespace centrala
             this.pomocToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(800, 24);
+            this.mainMenuStrip.Size = new System.Drawing.Size(1001, 24);
             this.mainMenuStrip.TabIndex = 0;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
@@ -175,16 +177,6 @@ namespace centrala
             this.statusPicture.TabIndex = 4;
             this.statusPicture.TabStop = false;
             // 
-            // connectButton
-            // 
-            this.connectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.connectButton.Location = new System.Drawing.Point(12, 326);
-            this.connectButton.Name = "connectButton";
-            this.connectButton.Size = new System.Drawing.Size(141, 23);
-            this.connectButton.TabIndex = 2;
-            this.connectButton.Text = "Połącz";
-            this.connectButton.UseVisualStyleBackColor = true;
-            // 
             // portValue
             // 
             this.portValue.AutoSize = true;
@@ -202,6 +194,16 @@ namespace centrala
             this.portLabel.Size = new System.Drawing.Size(29, 13);
             this.portLabel.TabIndex = 0;
             this.portLabel.Text = "Port:";
+            // 
+            // connectButton
+            // 
+            this.connectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.connectButton.Location = new System.Drawing.Point(12, 326);
+            this.connectButton.Name = "connectButton";
+            this.connectButton.Size = new System.Drawing.Size(141, 23);
+            this.connectButton.TabIndex = 2;
+            this.connectButton.Text = "Połącz";
+            this.connectButton.UseVisualStyleBackColor = true;
             // 
             // chooseDataGroup
             // 
@@ -236,32 +238,6 @@ namespace centrala
             this.logGroup.TabStop = false;
             this.logGroup.Text = "Logowanie";
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(10, 48);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(58, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Włącz";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(59, 18);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(58, 20);
-            this.numericUpDown1.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Interwał:";
-            // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -272,11 +248,57 @@ namespace centrala
             this.label2.TabIndex = 3;
             this.label2.Text = "s";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Interwał:";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(59, 18);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(58, 20);
+            this.numericUpDown1.TabIndex = 1;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(10, 48);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(58, 17);
+            this.checkBox1.TabIndex = 0;
+            this.checkBox1.Text = "Włącz";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // valuesGroup
+            // 
+            this.valuesGroup.Location = new System.Drawing.Point(159, 29);
+            this.valuesGroup.Name = "valuesGroup";
+            this.valuesGroup.Size = new System.Drawing.Size(830, 207);
+            this.valuesGroup.TabIndex = 5;
+            this.valuesGroup.TabStop = false;
+            this.valuesGroup.Text = "Wartości";
+            // 
+            // graphBox
+            // 
+            this.graphBox.Location = new System.Drawing.Point(159, 249);
+            this.graphBox.Name = "graphBox";
+            this.graphBox.Size = new System.Drawing.Size(830, 260);
+            this.graphBox.TabIndex = 6;
+            this.graphBox.TabStop = false;
+            this.graphBox.Text = "Wykresy";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1001, 521);
+            this.Controls.Add(this.graphBox);
+            this.Controls.Add(this.valuesGroup);
             this.Controls.Add(this.logGroup);
             this.Controls.Add(this.chooseDataGroup);
             this.Controls.Add(this.connectionInfoBox);
@@ -326,5 +348,7 @@ namespace centrala
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.GroupBox valuesGroup;
+        private System.Windows.Forms.GroupBox graphBox;
     }
 }
