@@ -87,11 +87,11 @@ namespace centrala
 
         private void SaveSettingsButton_Click(object sender, EventArgs e)
         {
-            ((MainForm)Owner).serial.comPort = (string)PortComboBox.SelectedValue;
-            ((MainForm)Owner).serial.baudRate = (int)BaudRateComboBox.SelectedValue;
-            ((MainForm)Owner).serial.paritySetting = (Parity)ParityComboBox.SelectedValue;
-            ((MainForm)Owner).serial.dataBits = (int)DataBitsComboBox.SelectedValue;
-            ((MainForm)Owner).serial.stopBits = (StopBits)StopBitsComboBox.SelectedValue;
+            ((MainForm)Owner).serial.ComPort = (string)PortComboBox.SelectedValue;
+            ((MainForm)Owner).serial.BaudRate = (int)BaudRateComboBox.SelectedValue;
+            ((MainForm)Owner).serial.ParitySetting = (Parity)ParityComboBox.SelectedValue;
+            ((MainForm)Owner).serial.DataBits = (int)DataBitsComboBox.SelectedValue;
+            ((MainForm)Owner).serial.StopBits = (StopBits)StopBitsComboBox.SelectedValue;
             MessageBox.Show("Zapisano");
         }
 

@@ -46,7 +46,7 @@ namespace centrala
             this.portLabel = new System.Windows.Forms.Label();
             this.connectButton = new System.Windows.Forms.Button();
             this.chooseDataGroup = new System.Windows.Forms.GroupBox();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.checkedListBox = new System.Windows.Forms.CheckedListBox();
             this.logGroup = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -208,7 +208,7 @@ namespace centrala
             // 
             // chooseDataGroup
             // 
-            this.chooseDataGroup.Controls.Add(this.checkedListBox1);
+            this.chooseDataGroup.Controls.Add(this.checkedListBox);
             this.chooseDataGroup.Location = new System.Drawing.Point(12, 127);
             this.chooseDataGroup.Name = "chooseDataGroup";
             this.chooseDataGroup.Size = new System.Drawing.Size(141, 111);
@@ -216,15 +216,21 @@ namespace centrala
             this.chooseDataGroup.TabStop = false;
             this.chooseDataGroup.Text = "Wybór danych";
             // 
-            // checkedListBox1
+            // checkedListBox
             // 
-            this.checkedListBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(10, 19);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(120, 90);
-            this.checkedListBox1.TabIndex = 0;
+            this.checkedListBox.BackColor = System.Drawing.SystemColors.Control;
+            this.checkedListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.checkedListBox.Items.AddRange(new object[] {
+            "Wysokość",
+            "IAS",
+            "TAS",
+            "W",
+            "Temperatura"});
+            this.checkedListBox.Location = new System.Drawing.Point(10, 19);
+            this.checkedListBox.Name = "checkedListBox";
+            this.checkedListBox.Size = new System.Drawing.Size(120, 90);
+            this.checkedListBox.TabIndex = 0;
+            this.checkedListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBox_ItemCheck);
             // 
             // logGroup
             // 
@@ -343,7 +349,7 @@ namespace centrala
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.GroupBox chooseDataGroup;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckedListBox checkedListBox;
         private System.Windows.Forms.GroupBox logGroup;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown numericUpDown1;

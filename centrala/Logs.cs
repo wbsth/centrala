@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace centrala
-{
-    class Logs
+{    public static class Logs
     {
+        
     }
 }
