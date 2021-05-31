@@ -50,8 +50,8 @@ namespace centrala
             this.logGroup = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.intervalValue = new System.Windows.Forms.NumericUpDown();
+            this.intervalCheckbox = new System.Windows.Forms.CheckBox();
             this.valuesGroup = new System.Windows.Forms.GroupBox();
             this.graphBox = new System.Windows.Forms.GroupBox();
             this.mainMenuStrip.SuspendLayout();
@@ -60,7 +60,7 @@ namespace centrala
             ((System.ComponentModel.ISupportInitialize)(this.statusPicture)).BeginInit();
             this.chooseDataGroup.SuspendLayout();
             this.logGroup.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.intervalValue)).BeginInit();
             this.SuspendLayout();
             // 
             // mainMenuStrip
@@ -236,8 +236,8 @@ namespace centrala
             // 
             this.logGroup.Controls.Add(this.label2);
             this.logGroup.Controls.Add(this.label1);
-            this.logGroup.Controls.Add(this.numericUpDown1);
-            this.logGroup.Controls.Add(this.checkBox1);
+            this.logGroup.Controls.Add(this.intervalValue);
+            this.logGroup.Controls.Add(this.intervalCheckbox);
             this.logGroup.Location = new System.Drawing.Point(12, 244);
             this.logGroup.Name = "logGroup";
             this.logGroup.Size = new System.Drawing.Size(141, 76);
@@ -264,22 +264,35 @@ namespace centrala
             this.label1.TabIndex = 2;
             this.label1.Text = "Interwał:";
             // 
-            // numericUpDown1
+            // intervalValue
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(59, 18);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(58, 20);
-            this.numericUpDown1.TabIndex = 1;
+            this.intervalValue.DecimalPlaces = 1;
+            this.intervalValue.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.intervalValue.Location = new System.Drawing.Point(59, 18);
+            this.intervalValue.Name = "intervalValue";
+            this.intervalValue.Size = new System.Drawing.Size(58, 20);
+            this.intervalValue.TabIndex = 1;
+            this.intervalValue.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // checkBox1
+            // intervalCheckbox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(10, 48);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(58, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Włącz";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.intervalCheckbox.AutoSize = true;
+            this.intervalCheckbox.Checked = true;
+            this.intervalCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.intervalCheckbox.Location = new System.Drawing.Point(10, 48);
+            this.intervalCheckbox.Name = "intervalCheckbox";
+            this.intervalCheckbox.Size = new System.Drawing.Size(58, 17);
+            this.intervalCheckbox.TabIndex = 0;
+            this.intervalCheckbox.Text = "Włącz";
+            this.intervalCheckbox.UseVisualStyleBackColor = true;
             // 
             // valuesGroup
             // 
@@ -325,7 +338,7 @@ namespace centrala
             this.chooseDataGroup.ResumeLayout(false);
             this.logGroup.ResumeLayout(false);
             this.logGroup.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.intervalValue)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -352,8 +365,8 @@ namespace centrala
         private System.Windows.Forms.CheckedListBox checkedListBox;
         private System.Windows.Forms.GroupBox logGroup;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.NumericUpDown intervalValue;
+        private System.Windows.Forms.CheckBox intervalCheckbox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox valuesGroup;
         private System.Windows.Forms.GroupBox graphBox;

@@ -15,6 +15,7 @@ namespace centrala
     {
         protected internal SerialConnection serial;
         private AirData airData;
+        private Logs logs;
 
         public MainForm()
         {
@@ -25,7 +26,12 @@ namespace centrala
         {
             serial = new SerialConnection(this);
             airData = new AirData();
-            portValue.DataBindings.Add(new Binding("Text", serial, "comPort"));
+            logs = new Logs();
+
+            portValue.DataBindings.Add(new Binding("Text", serial, "ComPort"));
+            intervalValue.DataBindings.Add(new Binding("Value", logs, "SavingInterval"));
+            intervalCheckbox.DataBindings.Add(new Binding("Checked", logs, "SavingEnabled"));
+
             for(int i = 0; i < checkedListBox.Items.Count; i++)
             {
                 checkedListBox.SetItemChecked(i, true);
@@ -55,7 +61,9 @@ namespace centrala
 
         private void connectButton_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(serial.ComPort);
+            Console.WriteLine(logs.SavingInterval);
+            Console.WriteLine(logs.SavingEnabled);
+            //statusPicture.Image = centrala.Properties.Resources.green;
         }
 
         private void checkedListBox_ItemCheck(object sender, ItemCheckEventArgs e)
