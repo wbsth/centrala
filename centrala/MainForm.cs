@@ -23,6 +23,7 @@ namespace centrala
         private void MainForm_Load(object sender, EventArgs e)
         {
             serial = new SerialConnection(this);
+            portValue.DataBindings.Add(new Binding("Text", serial, "comPort"));
         }
 
         private void ustawieniaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -44,6 +45,11 @@ namespace centrala
         private void zakończToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void connectButton_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine(serial.comPort);
         }
     }
 }

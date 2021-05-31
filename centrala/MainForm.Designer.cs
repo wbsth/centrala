@@ -204,6 +204,7 @@ namespace centrala
             this.connectButton.TabIndex = 2;
             this.connectButton.Text = "Połącz";
             this.connectButton.UseVisualStyleBackColor = true;
+            this.connectButton.Click += new System.EventHandler(this.connectButton_Click);
             // 
             // chooseDataGroup
             // 
@@ -278,16 +279,16 @@ namespace centrala
             // 
             this.valuesGroup.Location = new System.Drawing.Point(159, 29);
             this.valuesGroup.Name = "valuesGroup";
-            this.valuesGroup.Size = new System.Drawing.Size(830, 207);
+            this.valuesGroup.Size = new System.Drawing.Size(830, 209);
             this.valuesGroup.TabIndex = 5;
             this.valuesGroup.TabStop = false;
             this.valuesGroup.Text = "Wartości";
             // 
             // graphBox
             // 
-            this.graphBox.Location = new System.Drawing.Point(159, 249);
+            this.graphBox.Location = new System.Drawing.Point(159, 244);
             this.graphBox.Name = "graphBox";
-            this.graphBox.Size = new System.Drawing.Size(830, 260);
+            this.graphBox.Size = new System.Drawing.Size(830, 265);
             this.graphBox.TabIndex = 6;
             this.graphBox.TabStop = false;
             this.graphBox.Text = "Wykresy";

@@ -77,6 +77,9 @@ namespace centrala
             ParityComboBox.SelectedIndex = 2;
 
             StopBitsComboBox.DataSource = stopBitsList;
+            StopBitsComboBox.ValueMember = "Key";
+            StopBitsComboBox.DisplayMember = "Value";
+            StopBitsComboBox.SelectedIndex = 1;
 
             DataBitsComboBox.DataSource = dataBitsList;
             DataBitsComboBox.SelectedIndex = dataBitsList.IndexOf(8);
