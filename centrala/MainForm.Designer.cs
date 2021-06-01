@@ -46,19 +46,13 @@ namespace centrala
             this.portLabel = new System.Windows.Forms.Label();
             this.connectButton = new System.Windows.Forms.Button();
             this.chooseDataGroup = new System.Windows.Forms.GroupBox();
-            this.checkedListBox = new System.Windows.Forms.CheckedListBox();
+            this.DataCheckbox = new System.Windows.Forms.CheckedListBox();
             this.logGroup = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.intervalValue = new System.Windows.Forms.NumericUpDown();
             this.intervalCheckbox = new System.Windows.Forms.CheckBox();
             this.valuesGroup = new System.Windows.Forms.GroupBox();
-            this.TASLabelUnit = new System.Windows.Forms.Label();
-            this.TemperatureLabelUnit = new System.Windows.Forms.Label();
-            this.TASLabelValue = new System.Windows.Forms.Label();
-            this.TemperatureLabelValue = new System.Windows.Forms.Label();
-            this.TASLabel = new System.Windows.Forms.Label();
-            this.TemperatureLabel = new System.Windows.Forms.Label();
             this.GaugeVerticalSpeed = new centrala.Gauge();
             this.GaugeAltitude = new centrala.Gauge();
             this.GaugeSpeed = new centrala.Gauge();
@@ -66,6 +60,8 @@ namespace centrala
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.TemperatureTextGauge = new centrala.TextGauge();
+            this.TASTextGauge = new centrala.TextGauge();
             this.mainMenuStrip.SuspendLayout();
             this.connectionInfoBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -220,7 +216,7 @@ namespace centrala
             // 
             // chooseDataGroup
             // 
-            this.chooseDataGroup.Controls.Add(this.checkedListBox);
+            this.chooseDataGroup.Controls.Add(this.DataCheckbox);
             this.chooseDataGroup.Location = new System.Drawing.Point(12, 127);
             this.chooseDataGroup.Name = "chooseDataGroup";
             this.chooseDataGroup.Size = new System.Drawing.Size(141, 111);
@@ -228,21 +224,21 @@ namespace centrala
             this.chooseDataGroup.TabStop = false;
             this.chooseDataGroup.Text = "Wybór danych";
             // 
-            // checkedListBox
+            // DataCheckbox
             // 
-            this.checkedListBox.BackColor = System.Drawing.SystemColors.Control;
-            this.checkedListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.checkedListBox.Items.AddRange(new object[] {
-            "Wysokość",
+            this.DataCheckbox.BackColor = System.Drawing.SystemColors.Control;
+            this.DataCheckbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DataCheckbox.Items.AddRange(new object[] {
             "IAS",
-            "TAS",
+            "Wysokość",
             "W",
-            "Temperatura"});
-            this.checkedListBox.Location = new System.Drawing.Point(10, 19);
-            this.checkedListBox.Name = "checkedListBox";
-            this.checkedListBox.Size = new System.Drawing.Size(120, 90);
-            this.checkedListBox.TabIndex = 0;
-            this.checkedListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBox_ItemCheck);
+            "Temperatura",
+            "TAS"});
+            this.DataCheckbox.Location = new System.Drawing.Point(10, 19);
+            this.DataCheckbox.Name = "DataCheckbox";
+            this.DataCheckbox.Size = new System.Drawing.Size(120, 90);
+            this.DataCheckbox.TabIndex = 0;
+            this.DataCheckbox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBox_ItemCheck);
             // 
             // logGroup
             // 
@@ -308,12 +304,8 @@ namespace centrala
             // 
             // valuesGroup
             // 
-            this.valuesGroup.Controls.Add(this.TASLabelUnit);
-            this.valuesGroup.Controls.Add(this.TemperatureLabelUnit);
-            this.valuesGroup.Controls.Add(this.TASLabelValue);
-            this.valuesGroup.Controls.Add(this.TemperatureLabelValue);
-            this.valuesGroup.Controls.Add(this.TASLabel);
-            this.valuesGroup.Controls.Add(this.TemperatureLabel);
+            this.valuesGroup.Controls.Add(this.TASTextGauge);
+            this.valuesGroup.Controls.Add(this.TemperatureTextGauge);
             this.valuesGroup.Controls.Add(this.GaugeVerticalSpeed);
             this.valuesGroup.Controls.Add(this.GaugeAltitude);
             this.valuesGroup.Controls.Add(this.GaugeSpeed);
@@ -323,66 +315,6 @@ namespace centrala
             this.valuesGroup.TabIndex = 5;
             this.valuesGroup.TabStop = false;
             this.valuesGroup.Text = "Wartości";
-            // 
-            // TASLabelUnit
-            // 
-            this.TASLabelUnit.AutoSize = true;
-            this.TASLabelUnit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TASLabelUnit.Location = new System.Drawing.Point(786, 143);
-            this.TASLabelUnit.Name = "TASLabelUnit";
-            this.TASLabelUnit.Size = new System.Drawing.Size(38, 17);
-            this.TASLabelUnit.TabIndex = 4;
-            this.TASLabelUnit.Text = "km/h";
-            // 
-            // TemperatureLabelUnit
-            // 
-            this.TemperatureLabelUnit.AutoSize = true;
-            this.TemperatureLabelUnit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TemperatureLabelUnit.Location = new System.Drawing.Point(786, 117);
-            this.TemperatureLabelUnit.Name = "TemperatureLabelUnit";
-            this.TemperatureLabelUnit.Size = new System.Drawing.Size(23, 17);
-            this.TemperatureLabelUnit.TabIndex = 4;
-            this.TemperatureLabelUnit.Text = "°C";
-            // 
-            // TASLabelValue
-            // 
-            this.TASLabelValue.AutoSize = true;
-            this.TASLabelValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TASLabelValue.Location = new System.Drawing.Point(748, 143);
-            this.TASLabelValue.Name = "TASLabelValue";
-            this.TASLabelValue.Size = new System.Drawing.Size(13, 17);
-            this.TASLabelValue.TabIndex = 3;
-            this.TASLabelValue.Text = "-";
-            // 
-            // TemperatureLabelValue
-            // 
-            this.TemperatureLabelValue.AutoSize = true;
-            this.TemperatureLabelValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TemperatureLabelValue.Location = new System.Drawing.Point(748, 117);
-            this.TemperatureLabelValue.Name = "TemperatureLabelValue";
-            this.TemperatureLabelValue.Size = new System.Drawing.Size(13, 17);
-            this.TemperatureLabelValue.TabIndex = 3;
-            this.TemperatureLabelValue.Text = "-";
-            // 
-            // TASLabel
-            // 
-            this.TASLabel.AutoSize = true;
-            this.TASLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TASLabel.Location = new System.Drawing.Point(636, 143);
-            this.TASLabel.Name = "TASLabel";
-            this.TASLabel.Size = new System.Drawing.Size(39, 17);
-            this.TASLabel.TabIndex = 2;
-            this.TASLabel.Text = "TAS:";
-            // 
-            // TemperatureLabel
-            // 
-            this.TemperatureLabel.AutoSize = true;
-            this.TemperatureLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TemperatureLabel.Location = new System.Drawing.Point(636, 117);
-            this.TemperatureLabel.Name = "TemperatureLabel";
-            this.TemperatureLabel.Size = new System.Drawing.Size(94, 17);
-            this.TemperatureLabel.TabIndex = 1;
-            this.TemperatureLabel.Text = "Temperature:";
             // 
             // GaugeVerticalSpeed
             // 
@@ -453,6 +385,32 @@ namespace centrala
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // TemperatureTextGauge
+            // 
+            this.TemperatureTextGauge.AutoSize = true;
+            this.TemperatureTextGauge.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.TemperatureTextGauge.GaugeType = centrala.TextGauge.TextGaugesTypes.temperature;
+            this.TemperatureTextGauge.Location = new System.Drawing.Point(636, 117);
+            this.TemperatureTextGauge.Name = "TemperatureTextGauge";
+            this.TemperatureTextGauge.Size = new System.Drawing.Size(179, 17);
+            this.TemperatureTextGauge.TabIndex = 0;
+            this.TemperatureTextGauge.ValLabel = "Temperatura: ";
+            this.TemperatureTextGauge.ValUnit = "°C";
+            this.TemperatureTextGauge.ValValue = 0D;
+            // 
+            // TASTextGauge
+            // 
+            this.TASTextGauge.AutoSize = true;
+            this.TASTextGauge.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.TASTextGauge.GaugeType = centrala.TextGauge.TextGaugesTypes.TAS;
+            this.TASTextGauge.Location = new System.Drawing.Point(636, 143);
+            this.TASTextGauge.Name = "TASTextGauge";
+            this.TASTextGauge.Size = new System.Drawing.Size(186, 17);
+            this.TASTextGauge.TabIndex = 0;
+            this.TASTextGauge.ValLabel = "TAS: ";
+            this.TASTextGauge.ValUnit = "m/s";
+            this.TASTextGauge.ValValue = 0D;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -506,7 +464,7 @@ namespace centrala
         private System.Windows.Forms.Label dataPicture;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox chooseDataGroup;
-        private System.Windows.Forms.CheckedListBox checkedListBox;
+        private System.Windows.Forms.CheckedListBox DataCheckbox;
         private System.Windows.Forms.GroupBox logGroup;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown intervalValue;
@@ -520,13 +478,9 @@ namespace centrala
         private System.Windows.Forms.Button button1;
         private Gauge GaugeVerticalSpeed;
         private Gauge GaugeAltitude;
-        private System.Windows.Forms.Label TemperatureLabel;
-        private System.Windows.Forms.Label TASLabel;
-        private System.Windows.Forms.Label TemperatureLabelValue;
-        private System.Windows.Forms.Label TASLabelValue;
-        private System.Windows.Forms.Label TASLabelUnit;
-        private System.Windows.Forms.Label TemperatureLabelUnit;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private TextGauge TASTextGauge;
+        private TextGauge TemperatureTextGauge;
     }
 }

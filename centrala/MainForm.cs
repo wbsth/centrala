@@ -32,15 +32,17 @@ namespace centrala
             intervalValue.DataBindings.Add(new Binding("Value", logs, "SavingInterval"));
             intervalCheckbox.DataBindings.Add(new Binding("Checked", logs, "SavingEnabled"));
 
-            TemperatureLabelValue.DataBindings.Add(new Binding("Text", airData, "Temperature"));
-            TASLabelValue.DataBindings.Add(new Binding("Text", airData, "SpeedTAS"));
+            TemperatureTextGauge.DataBindings.Add(new Binding("ValValue", airData, "Temperature"));
+            TASTextGauge.DataBindings.Add(new Binding("ValValue", airData, "SpeedTAS"));
             GaugeSpeed.DataBindings.Add(new Binding("GaugeValue", airData, "SpeedIAS"));
             GaugeAltitude.DataBindings.Add(new Binding("GaugeValue", airData, "Altitude"));
             GaugeVerticalSpeed.DataBindings.Add(new Binding("GaugeValue", airData, "SpeedVertical"));
 
-            for (int i = 0; i < checkedListBox.Items.Count; i++)
+            //DataCheckbox.DataBindings.Add(new Binding("Items[0]", ));
+
+            for (int i = 0; i < DataCheckbox.Items.Count; i++)
             {
-                checkedListBox.SetItemChecked(i, true);
+                DataCheckbox.SetItemChecked(i, true);
             }
         }
 
@@ -67,13 +69,13 @@ namespace centrala
 
         private void connectButton_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(logs.SavingInterval);
-            Console.WriteLine(logs.SavingEnabled);
+            //changeStatusIndicator(true);
         }
 
         private void checkedListBox_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             airData.CheckedValues[e.Index] = (e.NewValue == CheckState.Checked);
+            List<object> tempList = new List<object> { GaugeSpeed, GaugeAltitude, GaugeVerticalSpeed,  };
         }
 
         public void changeStatusIndicator(bool status)
@@ -105,10 +107,10 @@ namespace centrala
         private void button3_Click(object sender, EventArgs e)
         {
             //GaugeAltitude.GaugeValue += 750;
-            if (GaugeSpeed.Enabled)
-                GaugeSpeed.Enabled = false;
+            if (TemperatureTextGauge.Enabled)
+                TemperatureTextGauge.Enabled = false;
             else
-                GaugeSpeed.Enabled = true;
+                TemperatureTextGauge.Enabled = true;
         }
     }
 }
