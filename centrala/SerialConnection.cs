@@ -11,6 +11,10 @@ namespace centrala
 {
     public class SerialConnection : INotifyPropertyChanged
     {
+        SerialPort port;
+        List<byte> tempBytes = new List<byte>();
+        private readonly MainForm form;
+
         // domyślne ustawienia
         private string _ComPort = "COM1";
         public string ComPort
@@ -39,8 +43,34 @@ namespace centrala
 
         public SerialConnection(MainForm mainForm)
         {
-
+            this.form = mainForm;
         }
 
+        public void CreateConnection()
+        {
+            if(port != null)
+            {
+                CloseConnection();
+            }
+            port = new SerialPort(_ComPort, BaudRate, ParitySetting, DataBits, StopBits);
+            port.DataReceived += Port_DataReceived;
+            port.Open();
+            form.changeStatusIndicator(true);
+        }
+
+        private void Port_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            while(port.BytesToRead > 0)
+            {
+                tempBytes.Add((byte)port.ReadByte());
+            }
+        }
+
+        public void CloseConnection()
+        {
+            port.Close();
+            port.Dispose();
+            form.changeStatusIndicator(false);
+        }
     }
 }

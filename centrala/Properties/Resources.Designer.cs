@@ -103,6 +103,16 @@ namespace centrala.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap predkosciomierz {
+            get {
+                object obj = ResourceManager.GetObject("predkosciomierz", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap red {
             get {
                 object obj = ResourceManager.GetObject("red", resourceCulture);
@@ -116,6 +126,46 @@ namespace centrala.Properties {
         internal static System.Drawing.Bitmap Settings_16x {
             get {
                 object obj = ResourceManager.GetObject("Settings_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wskazowka_duza {
+            get {
+                object obj = ResourceManager.GetObject("wskazowka_duza", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wskazowka_mala {
+            get {
+                object obj = ResourceManager.GetObject("wskazowka_mala", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wysokosc {
+            get {
+                object obj = ResourceManager.GetObject("wysokosc", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wznoszenie {
+            get {
+                object obj = ResourceManager.GetObject("wznoszenie", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -53,7 +53,9 @@ namespace centrala
             this.intervalValue = new System.Windows.Forms.NumericUpDown();
             this.intervalCheckbox = new System.Windows.Forms.CheckBox();
             this.valuesGroup = new System.Windows.Forms.GroupBox();
+            this.gauge1 = new centrala.Gauge();
             this.graphBox = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.mainMenuStrip.SuspendLayout();
             this.connectionInfoBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -61,6 +63,7 @@ namespace centrala
             this.chooseDataGroup.SuspendLayout();
             this.logGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.intervalValue)).BeginInit();
+            this.valuesGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMenuStrip
@@ -197,7 +200,6 @@ namespace centrala
             // 
             // connectButton
             // 
-            this.connectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.connectButton.Location = new System.Drawing.Point(12, 326);
             this.connectButton.Name = "connectButton";
             this.connectButton.Size = new System.Drawing.Size(141, 23);
@@ -296,27 +298,47 @@ namespace centrala
             // 
             // valuesGroup
             // 
+            this.valuesGroup.Controls.Add(this.gauge1);
             this.valuesGroup.Location = new System.Drawing.Point(159, 29);
             this.valuesGroup.Name = "valuesGroup";
-            this.valuesGroup.Size = new System.Drawing.Size(830, 209);
+            this.valuesGroup.Size = new System.Drawing.Size(830, 253);
             this.valuesGroup.TabIndex = 5;
             this.valuesGroup.TabStop = false;
             this.valuesGroup.Text = "Wartości";
             // 
+            // gauge1
+            // 
+            this.gauge1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gauge1.Location = new System.Drawing.Point(18, 19);
+            this.gauge1.Name = "gauge1";
+            this.gauge1.Size = new System.Drawing.Size(200, 228);
+            this.gauge1.TabIndex = 0;
+            // 
             // graphBox
             // 
-            this.graphBox.Location = new System.Drawing.Point(159, 244);
+            this.graphBox.Location = new System.Drawing.Point(159, 292);
             this.graphBox.Name = "graphBox";
-            this.graphBox.Size = new System.Drawing.Size(830, 265);
+            this.graphBox.Size = new System.Drawing.Size(830, 317);
             this.graphBox.TabIndex = 6;
             this.graphBox.TabStop = false;
             this.graphBox.Text = "Wykresy";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(38, 422);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 58);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1001, 521);
+            this.ClientSize = new System.Drawing.Size(1001, 621);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.graphBox);
             this.Controls.Add(this.valuesGroup);
             this.Controls.Add(this.logGroup);
@@ -339,6 +361,7 @@ namespace centrala
             this.logGroup.ResumeLayout(false);
             this.logGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.intervalValue)).EndInit();
+            this.valuesGroup.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -357,10 +380,8 @@ namespace centrala
         private System.Windows.Forms.Label portLabel;
         private System.Windows.Forms.Label portValue;
         private System.Windows.Forms.Button connectButton;
-        private System.Windows.Forms.PictureBox statusPicture;
         private System.Windows.Forms.Label dataPicture;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.GroupBox chooseDataGroup;
         private System.Windows.Forms.CheckedListBox checkedListBox;
         private System.Windows.Forms.GroupBox logGroup;
@@ -370,5 +391,9 @@ namespace centrala
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox valuesGroup;
         private System.Windows.Forms.GroupBox graphBox;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox statusPicture;
+        private Gauge gauge1;
+        private System.Windows.Forms.Button button1;
     }
 }

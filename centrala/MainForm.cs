@@ -70,5 +70,26 @@ namespace centrala
         {
             airData.CheckedValues[e.Index] = (e.NewValue == CheckState.Checked);
         }
+
+        public void changeStatusIndicator(bool status)
+        {
+            if (status)
+                statusPicture.Image = Properties.Resources.green;
+            else
+                statusPicture.Image = Properties.Resources.red;
+        }
+
+        public void changeDataIndicator(bool status)
+        {
+            if (status)
+                dataPicture.Image = Properties.Resources.green;
+            else
+                dataPicture.Image = Properties.Resources.red;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            gauge1.Rotate(5);
+        }
     }
 }

@@ -53,6 +53,13 @@
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AirData.cs" />
+    <Compile Include="Gauge.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gauge.Designer.cs">
+      <DependentUpon>Gauge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers.cs" />
     <Compile Include="Logs.cs" />
     <Compile Include="SerialConnection.cs" />
     <Compile Include="SettingsForm.cs">
@@ -71,6 +78,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gauge.resx">
+      <DependentUpon>Gauge.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -118,6 +128,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\predkosciomierz.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wysokosc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wznoszenie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\predkosciomierz_wskazowka.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wskazowka_duza.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wskazowka_mala.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
