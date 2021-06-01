@@ -16,6 +16,7 @@ namespace centrala
         protected internal SerialConnection serial;
         private AirData airData;
         private Logs logs;
+        private List<object> dataList = new List<object>();
 
         public MainForm()
         {
@@ -38,7 +39,11 @@ namespace centrala
             GaugeAltitude.DataBindings.Add(new Binding("GaugeValue", airData, "Altitude"));
             GaugeVerticalSpeed.DataBindings.Add(new Binding("GaugeValue", airData, "SpeedVertical"));
 
-            //DataCheckbox.DataBindings.Add(new Binding("Items[0]", ));
+            dataList.Add(GaugeSpeed);
+            dataList.Add(GaugeVerticalSpeed);
+
+            //GaugeSpeed.Enabled
+            //GaugeSpeed.DataBindings.Add(new Binding("Enabled", airData.CheckedValues[0], ""));
 
             for (int i = 0; i < DataCheckbox.Items.Count; i++)
             {
@@ -75,7 +80,12 @@ namespace centrala
         private void checkedListBox_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             airData.CheckedValues[e.Index] = (e.NewValue == CheckState.Checked);
-            List<object> tempList = new List<object> { GaugeSpeed, GaugeAltitude, GaugeVerticalSpeed,  };
+            Console.WriteLine("test");
+            List<UserControl> tempList = new List<UserControl> { GaugeSpeed, GaugeAltitude, GaugeVerticalSpeed, TemperatureTextGauge, TASTextGauge };
+            for(int i = 0; i<tempList.Count; i++)
+            {
+                tempList[i].Enabled = airData.CheckedValues[i];
+            }
         }
 
         public void changeStatusIndicator(bool status)

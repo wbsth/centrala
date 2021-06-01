@@ -78,7 +78,7 @@ namespace centrala
 
         public AirData()
         {
-            //CheckedValues = new List<bool>(new bool[5]);
+            //foreach(bool item in CheckedValues)
         }
     }
 }
