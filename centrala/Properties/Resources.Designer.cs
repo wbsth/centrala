@@ -143,9 +143,29 @@ namespace centrala.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap wskazowka_duza_obrocona {
+            get {
+                object obj = ResourceManager.GetObject("wskazowka_duza_obrocona", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap wskazowka_mala {
             get {
                 object obj = ResourceManager.GetObject("wskazowka_mala", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wskazowka_mala_obrocona {
+            get {
+                object obj = ResourceManager.GetObject("wskazowka_mala_obrocona", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

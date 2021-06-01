@@ -147,5 +147,11 @@
   <ItemGroup>
     <None Include="Resources\wskazowka_mala.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wskazowka_duza_obrocona.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wskazowka_mala_obrocona.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

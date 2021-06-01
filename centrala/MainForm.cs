@@ -32,7 +32,13 @@ namespace centrala
             intervalValue.DataBindings.Add(new Binding("Value", logs, "SavingInterval"));
             intervalCheckbox.DataBindings.Add(new Binding("Checked", logs, "SavingEnabled"));
 
-            for(int i = 0; i < checkedListBox.Items.Count; i++)
+            TemperatureLabelValue.DataBindings.Add(new Binding("Text", airData, "Temperature"));
+            TASLabelValue.DataBindings.Add(new Binding("Text", airData, "SpeedTAS"));
+            GaugeSpeed.DataBindings.Add(new Binding("GaugeValue", airData, "SpeedIAS"));
+            GaugeAltitude.DataBindings.Add(new Binding("GaugeValue", airData, "Altitude"));
+            GaugeVerticalSpeed.DataBindings.Add(new Binding("GaugeValue", airData, "SpeedVertical"));
+
+            for (int i = 0; i < checkedListBox.Items.Count; i++)
             {
                 checkedListBox.SetItemChecked(i, true);
             }
@@ -88,7 +94,17 @@ namespace centrala
 
         private void button1_Click(object sender, EventArgs e)
         {
-            gauge1.Rotate(5);
+            GaugeSpeed.GaugeValue += 5;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            GaugeVerticalSpeed.GaugeValue += 0.25;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            GaugeAltitude.GaugeValue += 750;
         }
     }
 }

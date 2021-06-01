@@ -12,6 +12,11 @@ namespace centrala
 {
     public partial class Gauge : UserControl
     {
+        const double speedConst = 0.818181;
+        const double altitudeConstBig = 27.77777;
+        const double altitudeConstSmall = 2.777777;
+        const double speedVerticalConst = 18;
+
         public enum IndicatorTypes
         {
             speed,
@@ -33,7 +38,23 @@ namespace centrala
                 SetImages();
             }
         }
-        private int rotation = 0;
+
+        private double _GaugeValue;
+        public double GaugeValue
+        {
+            get
+            {
+                return _GaugeValue;
+            }
+            set
+            {
+                if (Equals(value, _GaugeValue)) return;
+                _GaugeValue = value;
+                UpdateValue();
+            }
+        }
+
+        private string unit;
 
         public Gauge()
         {
@@ -43,12 +64,10 @@ namespace centrala
         private void SetImages()
         {
 
-            //mainGauge.Controls.Add(handSmall);
             handSmall.Parent = mainGauge;
             handSmall.BackColor = Color.Transparent;
             handSmall.Location = new Point(0, 0);
 
-            //mainGauge.Controls.Add(handBig);
             handBig.Parent = handSmall;
             handBig.BackColor = Color.Transparent;
             handBig.Location = new Point(0, 0);
@@ -56,28 +75,57 @@ namespace centrala
             if (_Type == IndicatorTypes.altitude)
             {
                 gaugeTitle.Text = "Wysokość";
-                unitValue.Text = "m";
+                unit = "m";
                 mainGauge.Image = Properties.Resources.wysokosc;
                 handBig.Visible = true;
             }
             else if (_Type == IndicatorTypes.speed)
             {
                 gaugeTitle.Text = "IAS";
-                unitValue.Text = "km/h";
+                unit = "km/h";
                 mainGauge.Image = Properties.Resources.predkosciomierz;
             }
             else if (_Type == IndicatorTypes.speedVertical)
             {
                 gaugeTitle.Text = "W";
-                unitValue.Text = "m/s";
+                unit = "m/s";
                 mainGauge.Image = Properties.Resources.wznoszenie;
             }
+            UpdateValue();
         }
 
-        public void Rotate(int rotation)
+        public void UpdateValue()
         {
-            handSmall.Image = Helpers.RotateImage(handSmall.Image, rotation);
-            this.rotation += rotation;
+            gaugeValueLabel.Text = $"{_GaugeValue} {unit}";
+            // update rotation
+            Rotate(_GaugeValue);
+        }
+
+        public void Rotate(double value)
+        {
+            float tempRotation;
+            float tempRotationBig;
+            if (_Type == IndicatorTypes.speed)
+            {
+                if (value > 40 && value < 480)
+                {
+                    tempRotation = (float)((value - 40) * speedConst);
+                    handSmall.Image = Helpers.RotateImage(Properties.Resources.wskazowka_mala_obrocona, tempRotation);
+                }
+                else return;
+            }
+            else if (_Type == IndicatorTypes.speedVertical)
+            {
+                tempRotation = (float)(value * speedVerticalConst);
+                handSmall.Image = Helpers.RotateImage(Properties.Resources.wskazowka_mala_obrocona, -90+tempRotation);
+            }
+            else if (_Type == IndicatorTypes.altitude)
+            {
+                tempRotation = (float)(value / altitudeConstSmall);
+                tempRotationBig = (float)(value / altitudeConstBig);
+                handSmall.Image = Helpers.RotateImage(Properties.Resources.wskazowka_mala_obrocona, 180 + tempRotation);
+                handBig.Image = Helpers.RotateImage(Properties.Resources.wskazowka_duza_obrocona, 180 + tempRotationBig);
+            }
         }
     }
 }
