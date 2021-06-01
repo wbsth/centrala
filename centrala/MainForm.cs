@@ -104,7 +104,11 @@ namespace centrala
 
         private void button3_Click(object sender, EventArgs e)
         {
-            GaugeAltitude.GaugeValue += 750;
+            //GaugeAltitude.GaugeValue += 750;
+            if (GaugeSpeed.Enabled)
+                GaugeSpeed.Enabled = false;
+            else
+                GaugeSpeed.Enabled = true;
         }
     }
 }

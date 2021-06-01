@@ -111,6 +111,7 @@ namespace centrala
             this.Controls.Add(this.mainGauge);
             this.Name = "Gauge";
             this.Size = new System.Drawing.Size(200, 228);
+            this.EnabledChanged += new System.EventHandler(this.Gauge_EnabledChanged);
             ((System.ComponentModel.ISupportInitialize)(this.handBig)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.handSmall)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainGauge)).EndInit();

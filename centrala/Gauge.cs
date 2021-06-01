@@ -96,6 +96,7 @@ namespace centrala
 
         public void UpdateValue()
         {
+            if (!this.Enabled) return;
             gaugeValueLabel.Text = $"{_GaugeValue} {unit}";
             // update rotation
             Rotate(_GaugeValue);
@@ -125,6 +126,22 @@ namespace centrala
                 tempRotationBig = (float)(value / altitudeConstBig);
                 handSmall.Image = Helpers.RotateImage(Properties.Resources.wskazowka_mala_obrocona, 180 + tempRotation);
                 handBig.Image = Helpers.RotateImage(Properties.Resources.wskazowka_duza_obrocona, 180 + tempRotationBig);
+            }
+        }
+
+        private void Gauge_EnabledChanged(object sender, EventArgs e)
+        {
+            if (!this.Enabled)
+            {
+                // wylaczenie zegara
+                mainGauge.Image = Helpers.SetImageOpacity(mainGauge.Image, (float)0.4);
+                handSmall.Image = Helpers.SetImageOpacity(handSmall.Image, (float)0.4);
+                handBig.Image = Helpers.SetImageOpacity(handBig.Image, (float)0.4);
+            }
+            else
+            {
+                // wlaczenie zegara
+                SetImages();
             }
         }
     }

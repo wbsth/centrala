@@ -425,7 +425,7 @@ namespace centrala
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(29, 392);
+            this.button1.Location = new System.Drawing.Point(22, 367);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(85, 40);
             this.button1.TabIndex = 7;
@@ -435,7 +435,7 @@ namespace centrala
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(43, 449);
+            this.button2.Location = new System.Drawing.Point(22, 413);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(68, 57);
             this.button2.TabIndex = 8;
@@ -445,7 +445,7 @@ namespace centrala
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(29, 526);
+            this.button3.Location = new System.Drawing.Point(22, 476);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(68, 57);
             this.button3.TabIndex = 8;
