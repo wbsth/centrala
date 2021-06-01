@@ -63,7 +63,6 @@ namespace centrala
         {
             Console.WriteLine(logs.SavingInterval);
             Console.WriteLine(logs.SavingEnabled);
-            //statusPicture.Image = centrala.Properties.Resources.green;
         }
 
         private void checkedListBox_ItemCheck(object sender, ItemCheckEventArgs e)

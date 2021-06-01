@@ -56,6 +56,8 @@ namespace centrala
             this.gauge1 = new centrala.Gauge();
             this.graphBox = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.gauge2 = new centrala.Gauge();
+            this.gauge3 = new centrala.Gauge();
             this.mainMenuStrip.SuspendLayout();
             this.connectionInfoBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -298,6 +300,8 @@ namespace centrala
             // 
             // valuesGroup
             // 
+            this.valuesGroup.Controls.Add(this.gauge3);
+            this.valuesGroup.Controls.Add(this.gauge2);
             this.valuesGroup.Controls.Add(this.gauge1);
             this.valuesGroup.Location = new System.Drawing.Point(159, 29);
             this.valuesGroup.Name = "valuesGroup";
@@ -309,6 +313,7 @@ namespace centrala
             // gauge1
             // 
             this.gauge1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gauge1.DesignerType = centrala.Gauge.IndicatorTypes.speed;
             this.gauge1.Location = new System.Drawing.Point(18, 19);
             this.gauge1.Name = "gauge1";
             this.gauge1.Size = new System.Drawing.Size(200, 228);
@@ -332,6 +337,24 @@ namespace centrala
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // gauge2
+            // 
+            this.gauge2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gauge2.DesignerType = centrala.Gauge.IndicatorTypes.altitude;
+            this.gauge2.Location = new System.Drawing.Point(224, 19);
+            this.gauge2.Name = "gauge2";
+            this.gauge2.Size = new System.Drawing.Size(200, 228);
+            this.gauge2.TabIndex = 0;
+            // 
+            // gauge3
+            // 
+            this.gauge3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gauge3.DesignerType = centrala.Gauge.IndicatorTypes.speedVertical;
+            this.gauge3.Location = new System.Drawing.Point(430, 19);
+            this.gauge3.Name = "gauge3";
+            this.gauge3.Size = new System.Drawing.Size(200, 228);
+            this.gauge3.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -395,5 +418,7 @@ namespace centrala
         private System.Windows.Forms.PictureBox statusPicture;
         private Gauge gauge1;
         private System.Windows.Forms.Button button1;
+        private Gauge gauge3;
+        private Gauge gauge2;
     }
 }

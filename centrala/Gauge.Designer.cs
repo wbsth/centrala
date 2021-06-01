@@ -31,11 +31,13 @@ namespace centrala
         {
             this.gaugeTitle = new System.Windows.Forms.TextBox();
             this.gaugeValue = new System.Windows.Forms.TextBox();
+            this.handSmall = new System.Windows.Forms.PictureBox();
+            this.mainGauge = new System.Windows.Forms.PictureBox();
+            this.handBig = new System.Windows.Forms.PictureBox();
             this.unitValue = new System.Windows.Forms.TextBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.handSmall)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainGauge)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.handBig)).BeginInit();
             this.SuspendLayout();
             // 
             // gaugeTitle
@@ -46,9 +48,10 @@ namespace centrala
             this.gaugeTitle.Location = new System.Drawing.Point(0, 0);
             this.gaugeTitle.Margin = new System.Windows.Forms.Padding(0);
             this.gaugeTitle.Name = "gaugeTitle";
+            this.gaugeTitle.ReadOnly = true;
             this.gaugeTitle.Size = new System.Drawing.Size(200, 22);
             this.gaugeTitle.TabIndex = 1;
-            this.gaugeTitle.Text = "NAZWA_PRZYRZĄDU";
+            this.gaugeTitle.Text = "TEST";
             this.gaugeTitle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // gaugeValue
@@ -64,6 +67,39 @@ namespace centrala
             this.gaugeValue.Text = "0";
             this.gaugeValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // handSmall
+            // 
+            this.handSmall.BackColor = System.Drawing.Color.Transparent;
+            this.handSmall.Image = global::centrala.Properties.Resources.wskazowka_mala;
+            this.handSmall.Location = new System.Drawing.Point(0, 30);
+            this.handSmall.Name = "handSmall";
+            this.handSmall.Size = new System.Drawing.Size(200, 173);
+            this.handSmall.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.handSmall.TabIndex = 2;
+            this.handSmall.TabStop = false;
+            // 
+            // mainGauge
+            // 
+            this.mainGauge.Image = global::centrala.Properties.Resources.plane;
+            this.mainGauge.Location = new System.Drawing.Point(0, 30);
+            this.mainGauge.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.mainGauge.Name = "mainGauge";
+            this.mainGauge.Size = new System.Drawing.Size(200, 173);
+            this.mainGauge.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.mainGauge.TabIndex = 0;
+            this.mainGauge.TabStop = false;
+            // 
+            // handBig
+            // 
+            this.handBig.Image = global::centrala.Properties.Resources.wskazowka_duza;
+            this.handBig.Location = new System.Drawing.Point(0, 30);
+            this.handBig.Name = "handBig";
+            this.handBig.Size = new System.Drawing.Size(200, 173);
+            this.handBig.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.handBig.TabIndex = 3;
+            this.handBig.TabStop = false;
+            this.handBig.Visible = false;
+            // 
             // unitValue
             // 
             this.unitValue.BackColor = System.Drawing.SystemColors.Control;
@@ -76,42 +112,22 @@ namespace centrala
             this.unitValue.TabIndex = 1;
             this.unitValue.Text = "km/h";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::centrala.Properties.Resources.wskazowka_mala;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 30);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(200, 173);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::centrala.Properties.Resources.predkosciomierz;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 30);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 173);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // Gauge
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.handBig);
+            this.Controls.Add(this.handSmall);
             this.Controls.Add(this.unitValue);
             this.Controls.Add(this.gaugeValue);
             this.Controls.Add(this.gaugeTitle);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.mainGauge);
             this.Name = "Gauge";
             this.Size = new System.Drawing.Size(200, 228);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.handSmall)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainGauge)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.handBig)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,10 +135,11 @@ namespace centrala
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox mainGauge;
         private System.Windows.Forms.TextBox gaugeTitle;
         private System.Windows.Forms.TextBox gaugeValue;
+        private System.Windows.Forms.PictureBox handSmall;
+        private System.Windows.Forms.PictureBox handBig;
         private System.Windows.Forms.TextBox unitValue;
-        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
