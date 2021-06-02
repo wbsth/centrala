@@ -74,6 +74,8 @@ namespace centrala
                 {
                     connectButton.Text = "Rozłącz";
                     logs.StartLogging();
+                    chooseDataGroup.Enabled = false;
+                    logGroup.Enabled = false;
                 }
             }
             else
@@ -81,6 +83,8 @@ namespace centrala
                 serial.CloseConnection();
                 connectButton.Text = "Połącz";
                 logs.StopLogging();
+                chooseDataGroup.Enabled = true;
+                logGroup.Enabled = true;
             }
         }
 

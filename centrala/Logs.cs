@@ -14,6 +14,7 @@ namespace centrala
         static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
 
         private StreamWriter streamWriter;
+        private List<int> CheckedIndices = new List<int>();
         private double _SavingInterval = 1;
         private bool _SavingEnabled = true;
         public double SavingInterval
@@ -68,21 +69,32 @@ namespace centrala
             {
                 myTimer.Stop();
                 streamWriter.Close();
+                CheckedIndices.Clear();
             }
         }
 
         private void MyTimer_Tick(object sender, EventArgs e)
         {
-            Console.WriteLine("TICK");//throw new NotImplementedException();
+            List<string> tempValues = new List<string>();
+            foreach(var index in CheckedIndices)
+            {
+                tempValues.Add(AirData.ValuesList[index].Key.ToString());
+            }
+            var joinedString = string.Join(";", tempValues);
+            var time = Helpers.GetTimeStampPrecise(DateTime.Now);
+            streamWriter.WriteLine($"{time};{joinedString}");
         }
 
         private void PrepareHeader()
         {
             List<string> tempStrings = new List<string>();
-            for(int i = 0; i < AirData.CheckedValues.Count; i++)
+            for (int i = 0; i < AirData.CheckedValues.Count; i++)
             {
                 if (AirData.CheckedValues[i])
-                    tempStrings.Add(AirData.PossibleValues[i]);
+                {
+                    tempStrings.Add(AirData.ValuesList[i].Value);
+                    CheckedIndices.Add(i);
+                }
             }
             var joinedString = string.Join(";", tempStrings);
             streamWriter.WriteLine($"time;{joinedString}");

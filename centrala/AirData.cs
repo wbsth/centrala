@@ -67,7 +67,9 @@ namespace centrala
             }
         }
 
-        public static List<string> PossibleValues { get; set; } = new List<string>
+        public static List<KeyValuePair<double, string>> ValuesList; 
+
+    public static List<string> PossibleValues { get; set; } = new List<string>
         {
             "SpeedIAS",
             "Altitude",
@@ -86,7 +88,14 @@ namespace centrala
 
         public AirData()
         {
-            //foreach(bool item in CheckedValues)
+            ValuesList = new List<KeyValuePair<double, string>>
+            {
+                new KeyValuePair<double, string>(SpeedIAS, "IAS"),
+                new KeyValuePair<double, string>(Altitude, "Wysokosc"),
+                new KeyValuePair<double, string>(SpeedVertical, "W"),
+                new KeyValuePair<double, string>(Temperature, "Temperatura"),
+                new KeyValuePair<double, string>(SpeedTAS, "TAS"),
+            };
         }
     }
 }

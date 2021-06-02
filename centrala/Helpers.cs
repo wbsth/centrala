@@ -95,5 +95,10 @@ namespace centrala
         {
             return value.ToString("yyyyMMddHHmmss");
         }
+
+        public static string GetTimeStampPrecise(DateTime value)
+        {
+            return value.ToString("O");
+        }
     }
 }
