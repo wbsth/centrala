@@ -16,7 +16,7 @@ namespace centrala
         protected internal SerialConnection serial;
         private AirData airData;
         private Logs logs;
-
+        private ChartHelper chartHelper;
         public MainForm()
         {
             InitializeComponent();
@@ -25,6 +25,7 @@ namespace centrala
         private void MainForm_Load(object sender, EventArgs e)
         {
             serial = new SerialConnection(this);
+            chartHelper = new ChartHelper();
             airData = new AirData();
             logs = new Logs();
 
@@ -91,12 +92,11 @@ namespace centrala
         private void checkedListBox_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             AirData.CheckedValues[e.Index] = (e.NewValue == CheckState.Checked);
-            Console.WriteLine("test");
-            List<UserControl> tempList = new List<UserControl> { GaugeSpeed, GaugeAltitude, GaugeVerticalSpeed, TemperatureTextGauge, TASTextGauge };
-            for(int i = 0; i<tempList.Count; i++)
-            {
-                tempList[i].Enabled = AirData.CheckedValues[i];
-            }
+            //List<UserControl> tempList = new List<UserControl> { GaugeSpeed, GaugeAltitude, GaugeVerticalSpeed, TemperatureTextGauge, TASTextGauge };
+            //for(int i = 0; i<tempList.Count; i++)
+            //{
+            //    tempList[i].Enabled = AirData.CheckedValues[i];
+            //}
         }
 
         public void changeStatusIndicator(bool status)
@@ -127,11 +127,25 @@ namespace centrala
 
         private void button3_Click(object sender, EventArgs e)
         {
-            //GaugeAltitude.GaugeValue += 750;
             if (TemperatureTextGauge.Enabled)
                 TemperatureTextGauge.Enabled = false;
             else
                 TemperatureTextGauge.Enabled = true;
         }
+
+        private void chartDataChoiceCheckbox_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            chartHelper.CheckedValues[e.Index] = (e.NewValue == CheckState.Checked);
+            UpdateChartVisibility(chartHelper.CheckedValues);
+        }
+
+        public void UpdateChartVisibility(List<bool> Vis)
+        {
+            for(int i = 0; i < Vis.Count; i++)
+            {
+                mainChart.Series[i].Enabled = Vis[i];
+            }
+        }
+
     }
 }
