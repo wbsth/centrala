@@ -71,23 +71,27 @@ namespace centrala
             if (!serial.PortOpen)
             {
                 if (serial.CreateConnection())
+                {
                     connectButton.Text = "Rozłącz";
+                    logs.StartLogging();
+                }
             }
             else
             {
                 serial.CloseConnection();
                 connectButton.Text = "Połącz";
+                logs.StopLogging();
             }
         }
 
         private void checkedListBox_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            airData.CheckedValues[e.Index] = (e.NewValue == CheckState.Checked);
+            AirData.CheckedValues[e.Index] = (e.NewValue == CheckState.Checked);
             Console.WriteLine("test");
             List<UserControl> tempList = new List<UserControl> { GaugeSpeed, GaugeAltitude, GaugeVerticalSpeed, TemperatureTextGauge, TASTextGauge };
             for(int i = 0; i<tempList.Count; i++)
             {
-                tempList[i].Enabled = airData.CheckedValues[i];
+                tempList[i].Enabled = AirData.CheckedValues[i];
             }
         }
 

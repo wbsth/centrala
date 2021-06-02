@@ -67,7 +67,15 @@ namespace centrala
             }
         }
 
-        public List<bool> CheckedValues { get; set; } = new List<bool>(new bool[5]);
+        public static List<string> PossibleValues { get; set; } = new List<string>
+        {
+            "SpeedIAS",
+            "Altitude",
+            "SpeedVertical",
+            "Temperature",
+            "SpeedTAS",
+        };
+        public static List<bool> CheckedValues { get; set; } = new List<bool>(new bool[5]);
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

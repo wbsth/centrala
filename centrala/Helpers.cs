@@ -90,5 +90,10 @@ namespace centrala
                 return null;
             }
         }
+
+        public static string GetTimestamp(DateTime value)
+        {
+            return value.ToString("yyyyMMddHHmmss");
+        }
     }
 }
