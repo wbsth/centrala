@@ -77,6 +77,7 @@ namespace centrala
                     logs.StartLogging();
                     chooseDataGroup.Enabled = false;
                     logGroup.Enabled = false;
+                    chartDataChoiceCheckbox.Enabled = false;
                 }
             }
             else
@@ -86,17 +87,18 @@ namespace centrala
                 logs.StopLogging();
                 chooseDataGroup.Enabled = true;
                 logGroup.Enabled = true;
+                chartDataChoiceCheckbox.Enabled = true;
             }
         }
 
         private void checkedListBox_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             AirData.CheckedValues[e.Index] = (e.NewValue == CheckState.Checked);
-            //List<UserControl> tempList = new List<UserControl> { GaugeSpeed, GaugeAltitude, GaugeVerticalSpeed, TemperatureTextGauge, TASTextGauge };
-            //for(int i = 0; i<tempList.Count; i++)
-            //{
-            //    tempList[i].Enabled = AirData.CheckedValues[i];
-            //}
+            List<UserControl> tempGaugeList = new List<UserControl> { GaugeSpeed, GaugeAltitude, GaugeVerticalSpeed, TemperatureTextGauge, TASTextGauge };
+            for (int i = 0; i < tempGaugeList.Count; i++)
+            {
+                tempGaugeList[i].Enabled = AirData.CheckedValues[i];
+            }
         }
 
         public void changeStatusIndicator(bool status)
