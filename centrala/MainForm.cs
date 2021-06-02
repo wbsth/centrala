@@ -16,7 +16,6 @@ namespace centrala
         protected internal SerialConnection serial;
         private AirData airData;
         private Logs logs;
-        private List<object> dataList = new List<object>();
 
         public MainForm()
         {
@@ -38,12 +37,6 @@ namespace centrala
             GaugeSpeed.DataBindings.Add(new Binding("GaugeValue", airData, "SpeedIAS"));
             GaugeAltitude.DataBindings.Add(new Binding("GaugeValue", airData, "Altitude"));
             GaugeVerticalSpeed.DataBindings.Add(new Binding("GaugeValue", airData, "SpeedVertical"));
-
-            dataList.Add(GaugeSpeed);
-            dataList.Add(GaugeVerticalSpeed);
-
-            //GaugeSpeed.Enabled
-            //GaugeSpeed.DataBindings.Add(new Binding("Enabled", airData.CheckedValues[0], ""));
 
             for (int i = 0; i < DataCheckbox.Items.Count; i++)
             {
@@ -74,7 +67,17 @@ namespace centrala
 
         private void connectButton_Click(object sender, EventArgs e)
         {
-            //changeStatusIndicator(true);
+            // łączenie
+            if (!serial.PortOpen)
+            {
+                if (serial.CreateConnection())
+                    connectButton.Text = "Rozłącz";
+            }
+            else
+            {
+                serial.CloseConnection();
+                connectButton.Text = "Połącz";
+            }
         }
 
         private void checkedListBox_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -91,17 +94,17 @@ namespace centrala
         public void changeStatusIndicator(bool status)
         {
             if (status)
-                statusPicture.Image = Properties.Resources.green;
+                StatusPicture.Image = Properties.Resources.green;
             else
-                statusPicture.Image = Properties.Resources.red;
+                StatusPicture.Image = Properties.Resources.red;
         }
 
         public void changeDataIndicator(bool status)
         {
             if (status)
-                dataPicture.Image = Properties.Resources.green;
+                DataPicture.Image = Properties.Resources.green;
             else
-                dataPicture.Image = Properties.Resources.red;
+                DataPicture.Image = Properties.Resources.red;
         }
 
         private void button1_Click(object sender, EventArgs e)

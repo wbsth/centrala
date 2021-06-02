@@ -14,6 +14,7 @@ namespace centrala
         SerialPort port;
         List<byte> tempBytes = new List<byte>();
         private readonly MainForm form;
+        public bool PortOpen { get; set; }
 
         // domyślne ustawienia
         private string _ComPort = "COM1";
@@ -46,7 +47,7 @@ namespace centrala
             this.form = mainForm;
         }
 
-        public void CreateConnection()
+        public bool CreateConnection()
         {
             if(port != null)
             {
@@ -55,21 +56,31 @@ namespace centrala
             port = new SerialPort(_ComPort, BaudRate, ParitySetting, DataBits, StopBits);
             port.DataReceived += Port_DataReceived;
             port.Open();
-            form.changeStatusIndicator(true);
+            if (port.IsOpen)
+            {
+                form.changeStatusIndicator(true);
+                PortOpen = true;
+                return true;
+            }
+            return false;            
         }
 
-        private void Port_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        private async void Port_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
+            form.changeDataIndicator(true);
             while(port.BytesToRead > 0)
             {
                 tempBytes.Add((byte)port.ReadByte());
             }
+            await Task.Delay(TimeSpan.FromMilliseconds(250));
+            form.changeDataIndicator(false);
         }
 
         public void CloseConnection()
         {
             port.Close();
             port.Dispose();
+            PortOpen = false;
             form.changeStatusIndicator(false);
         }
     }

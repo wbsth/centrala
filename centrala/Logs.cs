@@ -45,11 +45,3 @@ namespace centrala
 
     }
 }
-//get
-//{ return _Altitude; }
-//set
-//{
-//    if (Equals(value, _Altitude)) return;
-//    _Altitude = value;
-//    OnPropertyChanged();
-//}

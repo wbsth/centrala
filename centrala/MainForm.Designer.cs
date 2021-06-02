@@ -38,10 +38,10 @@ namespace centrala
             this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oProgramieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectionInfoBox = new System.Windows.Forms.GroupBox();
-            this.dataPicture = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.statusPicture = new System.Windows.Forms.PictureBox();
+            this.DataPictureLabel = new System.Windows.Forms.Label();
+            this.StatusPictureLabel = new System.Windows.Forms.Label();
+            this.DataPicture = new System.Windows.Forms.PictureBox();
+            this.StatusPicture = new System.Windows.Forms.PictureBox();
             this.portValue = new System.Windows.Forms.Label();
             this.portLabel = new System.Windows.Forms.Label();
             this.connectButton = new System.Windows.Forms.Button();
@@ -53,6 +53,8 @@ namespace centrala
             this.intervalValue = new System.Windows.Forms.NumericUpDown();
             this.intervalCheckbox = new System.Windows.Forms.CheckBox();
             this.valuesGroup = new System.Windows.Forms.GroupBox();
+            this.TASTextGauge = new centrala.TextGauge();
+            this.TemperatureTextGauge = new centrala.TextGauge();
             this.GaugeVerticalSpeed = new centrala.Gauge();
             this.GaugeAltitude = new centrala.Gauge();
             this.GaugeSpeed = new centrala.Gauge();
@@ -60,12 +62,10 @@ namespace centrala
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.TemperatureTextGauge = new centrala.TextGauge();
-            this.TASTextGauge = new centrala.TextGauge();
             this.mainMenuStrip.SuspendLayout();
             this.connectionInfoBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.statusPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StatusPicture)).BeginInit();
             this.chooseDataGroup.SuspendLayout();
             this.logGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.intervalValue)).BeginInit();
@@ -135,10 +135,10 @@ namespace centrala
             // connectionInfoBox
             // 
             this.connectionInfoBox.BackColor = System.Drawing.SystemColors.Control;
-            this.connectionInfoBox.Controls.Add(this.dataPicture);
-            this.connectionInfoBox.Controls.Add(this.label3);
-            this.connectionInfoBox.Controls.Add(this.pictureBox2);
-            this.connectionInfoBox.Controls.Add(this.statusPicture);
+            this.connectionInfoBox.Controls.Add(this.DataPictureLabel);
+            this.connectionInfoBox.Controls.Add(this.StatusPictureLabel);
+            this.connectionInfoBox.Controls.Add(this.DataPicture);
+            this.connectionInfoBox.Controls.Add(this.StatusPicture);
             this.connectionInfoBox.Controls.Add(this.portValue);
             this.connectionInfoBox.Controls.Add(this.portLabel);
             this.connectionInfoBox.Location = new System.Drawing.Point(12, 29);
@@ -148,43 +148,43 @@ namespace centrala
             this.connectionInfoBox.TabStop = false;
             this.connectionInfoBox.Text = "Połączenie";
             // 
-            // dataPicture
+            // DataPictureLabel
             // 
-            this.dataPicture.AutoSize = true;
-            this.dataPicture.Location = new System.Drawing.Point(66, 65);
-            this.dataPicture.Name = "dataPicture";
-            this.dataPicture.Size = new System.Drawing.Size(33, 13);
-            this.dataPicture.TabIndex = 6;
-            this.dataPicture.Text = "Dane";
+            this.DataPictureLabel.AutoSize = true;
+            this.DataPictureLabel.Location = new System.Drawing.Point(66, 65);
+            this.DataPictureLabel.Name = "DataPictureLabel";
+            this.DataPictureLabel.Size = new System.Drawing.Size(33, 13);
+            this.DataPictureLabel.TabIndex = 6;
+            this.DataPictureLabel.Text = "Dane";
             // 
-            // label3
+            // StatusPictureLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(65, 43);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Status";
+            this.StatusPictureLabel.AutoSize = true;
+            this.StatusPictureLabel.Location = new System.Drawing.Point(65, 43);
+            this.StatusPictureLabel.Name = "StatusPictureLabel";
+            this.StatusPictureLabel.Size = new System.Drawing.Size(37, 13);
+            this.StatusPictureLabel.TabIndex = 5;
+            this.StatusPictureLabel.Text = "Status";
             // 
-            // pictureBox2
+            // DataPicture
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(35, 62);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 4;
-            this.pictureBox2.TabStop = false;
+            this.DataPicture.Image = ((System.Drawing.Image)(resources.GetObject("DataPicture.Image")));
+            this.DataPicture.Location = new System.Drawing.Point(35, 62);
+            this.DataPicture.Name = "DataPicture";
+            this.DataPicture.Size = new System.Drawing.Size(16, 16);
+            this.DataPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.DataPicture.TabIndex = 4;
+            this.DataPicture.TabStop = false;
             // 
-            // statusPicture
+            // StatusPicture
             // 
-            this.statusPicture.Image = ((System.Drawing.Image)(resources.GetObject("statusPicture.Image")));
-            this.statusPicture.Location = new System.Drawing.Point(35, 40);
-            this.statusPicture.Name = "statusPicture";
-            this.statusPicture.Size = new System.Drawing.Size(16, 16);
-            this.statusPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.statusPicture.TabIndex = 4;
-            this.statusPicture.TabStop = false;
+            this.StatusPicture.Image = ((System.Drawing.Image)(resources.GetObject("StatusPicture.Image")));
+            this.StatusPicture.Location = new System.Drawing.Point(35, 40);
+            this.StatusPicture.Name = "StatusPicture";
+            this.StatusPicture.Size = new System.Drawing.Size(16, 16);
+            this.StatusPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.StatusPicture.TabIndex = 4;
+            this.StatusPicture.TabStop = false;
             // 
             // portValue
             // 
@@ -316,6 +316,32 @@ namespace centrala
             this.valuesGroup.TabStop = false;
             this.valuesGroup.Text = "Wartości";
             // 
+            // TASTextGauge
+            // 
+            this.TASTextGauge.AutoSize = true;
+            this.TASTextGauge.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.TASTextGauge.GaugeType = centrala.TextGauge.TextGaugesTypes.TAS;
+            this.TASTextGauge.Location = new System.Drawing.Point(636, 143);
+            this.TASTextGauge.Name = "TASTextGauge";
+            this.TASTextGauge.Size = new System.Drawing.Size(186, 17);
+            this.TASTextGauge.TabIndex = 0;
+            this.TASTextGauge.ValLabel = "TAS: ";
+            this.TASTextGauge.ValUnit = "m/s";
+            this.TASTextGauge.ValValue = 0D;
+            // 
+            // TemperatureTextGauge
+            // 
+            this.TemperatureTextGauge.AutoSize = true;
+            this.TemperatureTextGauge.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.TemperatureTextGauge.GaugeType = centrala.TextGauge.TextGaugesTypes.temperature;
+            this.TemperatureTextGauge.Location = new System.Drawing.Point(636, 117);
+            this.TemperatureTextGauge.Name = "TemperatureTextGauge";
+            this.TemperatureTextGauge.Size = new System.Drawing.Size(179, 17);
+            this.TemperatureTextGauge.TabIndex = 0;
+            this.TemperatureTextGauge.ValLabel = "Temperatura: ";
+            this.TemperatureTextGauge.ValUnit = "°C";
+            this.TemperatureTextGauge.ValValue = 0D;
+            // 
             // GaugeVerticalSpeed
             // 
             this.GaugeVerticalSpeed.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -385,32 +411,6 @@ namespace centrala
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // TemperatureTextGauge
-            // 
-            this.TemperatureTextGauge.AutoSize = true;
-            this.TemperatureTextGauge.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.TemperatureTextGauge.GaugeType = centrala.TextGauge.TextGaugesTypes.temperature;
-            this.TemperatureTextGauge.Location = new System.Drawing.Point(636, 117);
-            this.TemperatureTextGauge.Name = "TemperatureTextGauge";
-            this.TemperatureTextGauge.Size = new System.Drawing.Size(179, 17);
-            this.TemperatureTextGauge.TabIndex = 0;
-            this.TemperatureTextGauge.ValLabel = "Temperatura: ";
-            this.TemperatureTextGauge.ValUnit = "°C";
-            this.TemperatureTextGauge.ValValue = 0D;
-            // 
-            // TASTextGauge
-            // 
-            this.TASTextGauge.AutoSize = true;
-            this.TASTextGauge.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.TASTextGauge.GaugeType = centrala.TextGauge.TextGaugesTypes.TAS;
-            this.TASTextGauge.Location = new System.Drawing.Point(636, 143);
-            this.TASTextGauge.Name = "TASTextGauge";
-            this.TASTextGauge.Size = new System.Drawing.Size(186, 17);
-            this.TASTextGauge.TabIndex = 0;
-            this.TASTextGauge.ValLabel = "TAS: ";
-            this.TASTextGauge.ValUnit = "m/s";
-            this.TASTextGauge.ValValue = 0D;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -435,8 +435,8 @@ namespace centrala
             this.mainMenuStrip.PerformLayout();
             this.connectionInfoBox.ResumeLayout(false);
             this.connectionInfoBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.statusPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StatusPicture)).EndInit();
             this.chooseDataGroup.ResumeLayout(false);
             this.logGroup.ResumeLayout(false);
             this.logGroup.PerformLayout();
@@ -461,8 +461,8 @@ namespace centrala
         private System.Windows.Forms.Label portLabel;
         private System.Windows.Forms.Label portValue;
         private System.Windows.Forms.Button connectButton;
-        private System.Windows.Forms.Label dataPicture;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label DataPictureLabel;
+        private System.Windows.Forms.Label StatusPictureLabel;
         private System.Windows.Forms.GroupBox chooseDataGroup;
         private System.Windows.Forms.CheckedListBox DataCheckbox;
         private System.Windows.Forms.GroupBox logGroup;
@@ -472,8 +472,8 @@ namespace centrala
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox valuesGroup;
         private System.Windows.Forms.GroupBox graphBox;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox statusPicture;
+        private System.Windows.Forms.PictureBox DataPicture;
+        private System.Windows.Forms.PictureBox StatusPicture;
         private Gauge GaugeSpeed;
         private System.Windows.Forms.Button button1;
         private Gauge GaugeVerticalSpeed;
