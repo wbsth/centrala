@@ -100,5 +100,22 @@ namespace centrala
         {
             return value.ToString("O");
         }
+
+        public static double ParseDoubleString(string message)
+        {
+            double tempValue;
+            if(message != null)
+                try
+                {
+                    tempValue = double.Parse(message);
+                    return tempValue;
+                }
+                catch (FormatException)
+                {
+                    return 0;
+                }
+            return 0;
+        }
+
     }
 }

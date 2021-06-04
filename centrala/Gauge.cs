@@ -17,6 +17,8 @@ namespace centrala
         const double altitudeConstSmall = 2.777777;
         const double speedVerticalConst = 18;
 
+        private delegate void SafeCallDelegate();
+
         public enum IndicatorTypes
         {
             speed,
@@ -96,10 +98,18 @@ namespace centrala
 
         public void UpdateValue()
         {
-            if (!this.Enabled) return;
-            gaugeValueLabel.Text = $"{_GaugeValue} {unit}";
-            // update rotation
-            Rotate(_GaugeValue);
+            if (gaugeValueLabel.InvokeRequired)
+            {
+                var d = new SafeCallDelegate(UpdateValue);
+                gaugeValueLabel.Invoke(d, new object[] { });
+            }
+            else
+            {
+                if (!this.Enabled) return;
+                gaugeValueLabel.Text = $"{_GaugeValue} {unit}";
+                // update rotation
+                Rotate(_GaugeValue);
+            }
         }
 
         public void Rotate(double value)

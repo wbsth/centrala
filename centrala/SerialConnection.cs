@@ -12,6 +12,7 @@ namespace centrala
     public class SerialConnection : INotifyPropertyChanged
     {
         SerialPort port;
+        AirData airData;
         List<byte> tempBytes = new List<byte>();
         private readonly MainForm form;
         public bool PortOpen { get; set; }
@@ -42,9 +43,10 @@ namespace centrala
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public SerialConnection(MainForm mainForm)
+        public SerialConnection(MainForm mainForm, AirData airData)
         {
             this.form = mainForm;
+            this.airData = airData;
         }
 
         public bool CreateConnection()
@@ -72,8 +74,11 @@ namespace centrala
             {
                 tempBytes.Add((byte)port.ReadByte());
             }
-            await Task.Delay(TimeSpan.FromMilliseconds(250));
+            ProcessBuffor();
+            await Task.Delay(TimeSpan.FromMilliseconds(100));
             form.changeDataIndicator(false);
+
+            //MessageParser("1,2,3,4,5");
         }
 
         public void CloseConnection()
@@ -82,6 +87,45 @@ namespace centrala
             port.Dispose();
             PortOpen = false;
             form.changeStatusIndicator(false);
+        }
+
+        private void ProcessBuffor()
+        {
+            List<byte> tempList = new List<byte>();
+            for (int i = 0; i < tempBytes.Count; i++)
+            {
+                if(tempBytes[i] == '$')
+                {
+                    var j = i + 1;
+                    while (j != tempBytes.Count && tempBytes[j] != '\n')
+                    {
+                        tempList.Add(tempBytes[j]);
+                        j += 1;
+                    }
+                    MessageParser(Encoding.ASCII.GetString(tempList.ToArray()));
+                    tempList.Clear();
+                    i = j + 1;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Parse message received from air data computer and update AirData with this new values
+        /// </summary>
+        /// <param name="message">message to be parsed</param>
+        private void MessageParser(string message)
+        {
+            string[] splittedValues = message.Split(',');
+            if(splittedValues.Length == 5)
+            {
+                airData.SpeedIAS = Helpers.ParseDoubleString(splittedValues[0]);
+                airData.Altitude = Helpers.ParseDoubleString(splittedValues[1]);
+                airData.SpeedVertical = Helpers.ParseDoubleString(splittedValues[2]);
+                airData.Temperature = Helpers.ParseDoubleString(splittedValues[3]);
+                airData.SpeedTAS = Helpers.ParseDoubleString(splittedValues[4]);
+
+            }
+
         }
     }
 }

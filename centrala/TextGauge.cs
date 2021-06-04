@@ -12,6 +12,8 @@ namespace centrala
 {
     public partial class TextGauge : UserControl
     {
+        private delegate void SafeCallDelegate(Label label, string val);
+
         public enum TextGaugesTypes
         {
             temperature,
@@ -45,8 +47,8 @@ namespace centrala
             set
             {
                 if (Equals(value, _ValLabel)) return;
-                _ValLabel = ValueLabel.Text = value;
-                
+                _ValLabel = value;
+                UpdateSafe(ValueLabel, value);
             }
         }
 
@@ -60,7 +62,7 @@ namespace centrala
             {
                 if (Equals(value, _ValValue)) return;
                 _ValValue = value;
-                ValueResult.Text = value.ToString();
+                UpdateSafe(ValueResult, value.ToString());
             }
         }
 
@@ -94,6 +96,17 @@ namespace centrala
                 ValLabel = "Temperatura: ";
                 ValUnit = "°C";
             }
+        }
+
+        private void UpdateSafe(Label label, string val)
+        {
+            if (label.InvokeRequired)
+            {
+                var d = new SafeCallDelegate(UpdateSafe);
+                label.Invoke(d, new object[] { label, val });
+            }
+            else
+                label.Text = val;
         }
 
     }

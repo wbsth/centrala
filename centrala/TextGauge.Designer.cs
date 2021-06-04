@@ -50,9 +50,9 @@ namespace centrala
             this.ValueResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ValueResult.Location = new System.Drawing.Point(115, 0);
             this.ValueResult.Name = "ValueResult";
-            this.ValueResult.Size = new System.Drawing.Size(13, 17);
+            this.ValueResult.Size = new System.Drawing.Size(16, 17);
             this.ValueResult.TabIndex = 6;
-            this.ValueResult.Text = "-";
+            this.ValueResult.Text = "0";
             // 
             // ValueLabel
             // 

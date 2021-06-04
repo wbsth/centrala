@@ -24,9 +24,9 @@ namespace centrala
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            serial = new SerialConnection(this);
-            chartHelper = new ChartHelper();
             airData = new AirData();
+            serial = new SerialConnection(this, airData);
+            chartHelper = new ChartHelper();
             logs = new Logs();
 
             portValue.DataBindings.Add(new Binding("Text", serial, "ComPort"));
@@ -119,7 +119,11 @@ namespace centrala
 
         private void button1_Click(object sender, EventArgs e)
         {
-            GaugeSpeed.GaugeValue += 5;
+            airData.SpeedTAS += 5;
+            airData.SpeedIAS += 5;
+            airData.SpeedVertical += 0.5;
+            airData.Altitude += 5;
+            airData.Temperature += 1;
         }
 
         private void button2_Click(object sender, EventArgs e)
