@@ -13,12 +13,16 @@ namespace centrala
     {
         SerialPort port;
         AirData airData;
+        CircleBuffer buffer;
         List<byte> tempBytes = new List<byte>();
         private readonly MainForm form;
+        List<byte> tempByteList;
+        bool insideMessage;
+
         public bool PortOpen { get; set; }
 
         // domyślne ustawienia
-        private string _ComPort = "COM1";
+        private string _ComPort = "COM3";
         public string ComPort
         {
             get
@@ -47,6 +51,9 @@ namespace centrala
         {
             this.form = mainForm;
             this.airData = airData;
+            buffer = new CircleBuffer(2048);
+            tempByteList = new List<byte>();
+            insideMessage = false;
         }
 
         public bool CreateConnection()
@@ -72,13 +79,13 @@ namespace centrala
             form.changeDataIndicator(true);
             while(port.BytesToRead > 0)
             {
-                tempBytes.Add((byte)port.ReadByte());
+                buffer.EnterValue((byte)port.ReadByte());
+                //tempBytes.Add((byte)port.ReadByte());
             }
             ProcessBuffor();
             await Task.Delay(TimeSpan.FromMilliseconds(100));
             form.changeDataIndicator(false);
 
-            //MessageParser("1,2,3,4,5");
         }
 
         public void CloseConnection()
@@ -91,22 +98,56 @@ namespace centrala
 
         private void ProcessBuffor()
         {
-            List<byte> tempList = new List<byte>();
-            for (int i = 0; i < tempBytes.Count; i++)
+            Console.WriteLine($"Read:{buffer.CurrentReadPosition}, Write:{buffer.CurrentWritePosition}");
+            byte temp;
+            //bool insideMessage = false;
+            //List<byte> tempByteList = new List<byte>();
+
+            while (true)
             {
-                if(tempBytes[i] == '$')
+                temp = buffer.GetValue();
+                if (temp == '#')
                 {
-                    var j = i + 1;
-                    while (j != tempBytes.Count && tempBytes[j] != '\n')
+                    Console.WriteLine("# encountered");
+                    break;
+                }
+                if (temp == '$')
+                {
+                    Console.WriteLine("$ encountered");
+                    insideMessage = true;
+                }
+                else if (insideMessage)
+                {
+                    if (temp == '\n')
                     {
-                        tempList.Add(tempBytes[j]);
-                        j += 1;
+                        Console.WriteLine("end of message");
+                        MessageParser(Encoding.ASCII.GetString(tempByteList.ToArray()));
+                        insideMessage = false;
+                        tempByteList.Clear();
                     }
-                    MessageParser(Encoding.ASCII.GetString(tempList.ToArray()));
-                    tempList.Clear();
-                    i = j + 1;
+                    else
+                    {
+                        tempByteList.Add(temp);
+                        Console.WriteLine(tempByteList.Count);
+                    }
                 }
             }
+
+            //for (int i = 0; i < tempBytes.Count; i++)
+            //{
+            //    if(tempBytes[i] == '$')
+            //    {
+            //        var j = i + 1;
+            //        while (j != tempBytes.Count && tempBytes[j] != '\n')
+            //        {
+            //            tempList.Add(tempBytes[j]);
+            //            j += 1;
+            //        }
+            //        MessageParser(Encoding.ASCII.GetString(tempList.ToArray()));
+            //        tempList.Clear();
+            //        i = j + 1;
+            //    }
+            //}
         }
 
         /// <summary>
@@ -118,6 +159,7 @@ namespace centrala
             string[] splittedValues = message.Split(',');
             if(splittedValues.Length == 5)
             {
+                Console.WriteLine("Parsuje wiadomosc");
                 airData.SpeedIAS = Helpers.ParseDoubleString(splittedValues[0]);
                 airData.Altitude = Helpers.ParseDoubleString(splittedValues[1]);
                 airData.SpeedVertical = Helpers.ParseDoubleString(splittedValues[2]);

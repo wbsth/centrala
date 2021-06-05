@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="AirData.cs" />
     <Compile Include="ChartHelper.cs" />
+    <Compile Include="CircleBuffer.cs" />
     <Compile Include="Gauge.cs">
       <SubType>UserControl</SubType>
     </Compile>

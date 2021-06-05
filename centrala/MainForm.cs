@@ -111,10 +111,10 @@ namespace centrala
 
         public void changeDataIndicator(bool status)
         {
-            if (status)
-                DataPicture.Image = Properties.Resources.green;
-            else
-                DataPicture.Image = Properties.Resources.red;
+            //if (status)
+            //    DataPicture.Image = Properties.Resources.green;
+            //else
+            //    DataPicture.Image = Properties.Resources.red;
         }
 
         private void button1_Click(object sender, EventArgs e)
