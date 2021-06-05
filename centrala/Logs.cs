@@ -76,6 +76,10 @@ namespace centrala
         private void MyTimer_Tick(object sender, EventArgs e)
         {
             List<string> tempValues = new List<string>();
+            List<double> rawValues = new List<double>
+            {
+                AirData
+            }
             foreach(var index in CheckedIndices)
             {
                 tempValues.Add(AirData.ValuesList[index].Key.ToString());

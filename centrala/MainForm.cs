@@ -16,7 +16,7 @@ namespace centrala
         protected internal SerialConnection serial;
         private AirData airData;
         private Logs logs;
-        private ChartHelper chartHelper;
+        private delegate void SafeCallDelegate(int val);
         public MainForm()
         {
             InitializeComponent();
@@ -24,9 +24,8 @@ namespace centrala
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            airData = new AirData();
+            airData = new AirData(this);
             serial = new SerialConnection(this, airData);
-            chartHelper = new ChartHelper();
             logs = new Logs();
 
             portValue.DataBindings.Add(new Binding("Text", serial, "ComPort"));
@@ -39,10 +38,17 @@ namespace centrala
             GaugeAltitude.DataBindings.Add(new Binding("GaugeValue", airData, "Altitude"));
             GaugeVerticalSpeed.DataBindings.Add(new Binding("GaugeValue", airData, "SpeedVertical"));
 
+            //mainChart.DataSource = airData.ArchivesList;
+            //mainChart.Series[0].YValueMembers = "[0].Buffer";//Points.DataBindY(airData.ArchivesList[0].Buffer);
+            mainChart.Series[0].Points.DataBindY(airData.ArchivesList[0].Buffer);
+
             for (int i = 0; i < DataCheckbox.Items.Count; i++)
             {
                 DataCheckbox.SetItemChecked(i, true);
             }
+
+            
+
         }
 
         private void ustawieniaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -111,19 +117,15 @@ namespace centrala
 
         public void changeDataIndicator(bool status)
         {
-            //if (status)
-            //    DataPicture.Image = Properties.Resources.green;
-            //else
-            //    DataPicture.Image = Properties.Resources.red;
+            if (status)
+                DataPicture.Image = Properties.Resources.green;
+            else
+                DataPicture.Image = Properties.Resources.red;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            airData.SpeedTAS += 5;
-            airData.SpeedIAS += 5;
-            airData.SpeedVertical += 0.5;
-            airData.Altitude += 5;
-            airData.Temperature += 1;
+            mainChart.Series[0].Points.DataBindY(airData.ArchivesList[0].Buffer);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -141,8 +143,8 @@ namespace centrala
 
         private void chartDataChoiceCheckbox_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            chartHelper.CheckedValues[e.Index] = (e.NewValue == CheckState.Checked);
-            UpdateChartVisibility(chartHelper.CheckedValues);
+            ChartHelper.CheckedValues[e.Index] = (e.NewValue == CheckState.Checked);
+            UpdateChartVisibility(ChartHelper.CheckedValues);
         }
 
         public void UpdateChartVisibility(List<bool> Vis)
@@ -151,6 +153,19 @@ namespace centrala
             {
                 mainChart.Series[i].Enabled = Vis[i];
             }
+        }
+
+        public void UpdateChartBindingsSafe(int number)
+        {
+            if (mainChart.InvokeRequired)
+            {
+                var d = new SafeCallDelegate(UpdateChartBindingsSafe);
+                mainChart.Invoke(d, new object[] { number });
+            }
+            else
+            {
+                mainChart.Series[number].Points.DataBindY(airData.ArchivesList[number].Buffer);
+            }           
         }
 
     }

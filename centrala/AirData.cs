@@ -10,6 +10,8 @@ namespace centrala
 {
     public class AirData : INotifyPropertyChanged
     {
+        MainForm form;
+
         private double _Altitude = 0;
         private double _SpeedIAS = 0;
         private double _SpeedTAS = 0;
@@ -23,6 +25,8 @@ namespace centrala
             {
                 if (Equals(value, _Altitude)) return;
                 _Altitude = value;
+                AltitudeArchive.EnterValue(value);
+                form.UpdateChartBindingsSafe(1);
                 OnPropertyChanged();
             }
         }
@@ -33,6 +37,8 @@ namespace centrala
             {
                 if (Equals(value, _SpeedIAS)) return;
                 _SpeedIAS = value;
+                SpeedIASArchive.EnterValue(value);
+                form.UpdateChartBindingsSafe(0);
                 OnPropertyChanged();
             }
         }
@@ -43,6 +49,8 @@ namespace centrala
             {
                 if (Equals(value, _SpeedTAS)) return;
                 _SpeedTAS = value;
+                SpeedTASArchive.EnterValue(value);
+                form.UpdateChartBindingsSafe(4);
                 OnPropertyChanged();
             }
         }
@@ -53,6 +61,8 @@ namespace centrala
             {
                 if (Equals(value, _SpeedVertical)) return;
                 _SpeedVertical = value;
+                SpeedVerticalArchive.EnterValue(value);
+                form.UpdateChartBindingsSafe(2);
                 OnPropertyChanged();
             }
         }
@@ -63,9 +73,20 @@ namespace centrala
             {
                 if (Equals(value, _Temperature)) return;
                 _Temperature = value;
+                TemperatureArchive.EnterValue(value);
+                form.UpdateChartBindingsSafe(3);
                 OnPropertyChanged();
             }
         }
+
+        //private int ArchiveCount = 100;
+        private ArchiveBuffer AltitudeArchive = new ArchiveBuffer();
+        private ArchiveBuffer SpeedIASArchive = new ArchiveBuffer();
+        private ArchiveBuffer SpeedTASArchive = new ArchiveBuffer();
+        private ArchiveBuffer SpeedVerticalArchive = new ArchiveBuffer();
+        private ArchiveBuffer TemperatureArchive = new ArchiveBuffer();
+
+        public List<ArchiveBuffer> ArchivesList;
 
         public static List<KeyValuePair<double, string>> ValuesList; 
         public static List<bool> CheckedValues { get; set; } = new List<bool>(new bool[5]);
@@ -77,8 +98,9 @@ namespace centrala
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public AirData()
+        public AirData(MainForm form)
         {
+            this.form = form;
             ValuesList = new List<KeyValuePair<double, string>>
             {
                 new KeyValuePair<double, string>(SpeedIAS, "IAS"),
@@ -87,6 +109,14 @@ namespace centrala
                 new KeyValuePair<double, string>(Temperature, "Temperatura"),
                 new KeyValuePair<double, string>(SpeedTAS, "TAS"),
             };
+            ArchivesList = new List<ArchiveBuffer>
+            {
+                SpeedIASArchive,
+                AltitudeArchive,
+                SpeedVerticalArchive,
+                TemperatureArchive,
+                SpeedTASArchive
+            };   
         }
     }
 }

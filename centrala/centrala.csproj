@@ -54,6 +54,7 @@
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AirData.cs" />
+    <Compile Include="ArchiveBuffer.cs" />
     <Compile Include="ChartHelper.cs" />
     <Compile Include="CircleBuffer.cs" />
     <Compile Include="Gauge.cs">

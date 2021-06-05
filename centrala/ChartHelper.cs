@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace centrala
 {
-    public class ChartHelper
+    public static class ChartHelper
     {
-        public List<bool> CheckedValues { get; set; } = new List<bool>(new bool[5]);
+        public static List<bool> CheckedValues { get; set; } = new List<bool>(new bool[5]);
 
-        public ChartHelper()
-        {
+        private static int StoredValues = 100;
 
-        }
+
+
     }
 }
