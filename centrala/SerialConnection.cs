@@ -83,7 +83,7 @@ namespace centrala
                 //tempBytes.Add((byte)port.ReadByte());
             }
             ProcessBuffor();
-            await Task.Delay(TimeSpan.FromMilliseconds(100));
+            await Task.Delay(TimeSpan.FromMilliseconds(25));
             form.changeDataIndicator(false);
 
         }
@@ -100,8 +100,6 @@ namespace centrala
         {
             Console.WriteLine($"Read:{buffer.CurrentReadPosition}, Write:{buffer.CurrentWritePosition}");
             byte temp;
-            //bool insideMessage = false;
-            //List<byte> tempByteList = new List<byte>();
 
             while (true)
             {
@@ -132,22 +130,6 @@ namespace centrala
                     }
                 }
             }
-
-            //for (int i = 0; i < tempBytes.Count; i++)
-            //{
-            //    if(tempBytes[i] == '$')
-            //    {
-            //        var j = i + 1;
-            //        while (j != tempBytes.Count && tempBytes[j] != '\n')
-            //        {
-            //            tempList.Add(tempBytes[j]);
-            //            j += 1;
-            //        }
-            //        MessageParser(Encoding.ASCII.GetString(tempList.ToArray()));
-            //        tempList.Clear();
-            //        i = j + 1;
-            //    }
-            //}
         }
 
         /// <summary>

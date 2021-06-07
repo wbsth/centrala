@@ -26,7 +26,7 @@ namespace centrala
         {
             airData = new AirData(this);
             serial = new SerialConnection(this, airData);
-            logs = new Logs();
+            logs = new Logs(airData);
 
             portValue.DataBindings.Add(new Binding("Text", serial, "ComPort"));
             intervalValue.DataBindings.Add(new Binding("Value", logs, "SavingInterval"));
@@ -125,20 +125,17 @@ namespace centrala
 
         private void button1_Click(object sender, EventArgs e)
         {
-            mainChart.Series[0].Points.DataBindY(airData.ArchivesList[0].Buffer);
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            GaugeVerticalSpeed.GaugeValue += 0.25;
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (TemperatureTextGauge.Enabled)
-                TemperatureTextGauge.Enabled = false;
-            else
-                TemperatureTextGauge.Enabled = true;
+
         }
 
         private void chartDataChoiceCheckbox_ItemCheck(object sender, ItemCheckEventArgs e)

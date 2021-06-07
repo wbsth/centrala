@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Globalization;
 
 namespace centrala
 {
@@ -107,7 +108,7 @@ namespace centrala
             if(message != null)
                 try
                 {
-                    tempValue = double.Parse(message);
+                    tempValue = GetDouble(message, 0);
                     return tempValue;
                 }
                 catch (FormatException)
@@ -115,6 +116,22 @@ namespace centrala
                     return 0;
                 }
             return 0;
+        }
+
+        public static double GetDouble(string value, double defaultValue)
+        {
+            double result;
+
+            // Try parsing in the current culture
+            if (!double.TryParse(value, System.Globalization.NumberStyles.Any, CultureInfo.CurrentCulture, out result) &&
+                // Then try in US english
+                !double.TryParse(value, System.Globalization.NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out result) &&
+                // Then in neutral language
+                !double.TryParse(value, System.Globalization.NumberStyles.Any, CultureInfo.InvariantCulture, out result))
+            {
+                result = defaultValue;
+            }
+            return result;
         }
 
     }

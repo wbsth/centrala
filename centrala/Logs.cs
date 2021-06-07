@@ -13,6 +13,7 @@ namespace centrala
     {
         static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
 
+        private AirData airData;
         private StreamWriter streamWriter;
         private List<int> CheckedIndices = new List<int>();
         private double _SavingInterval = 1;
@@ -48,6 +49,11 @@ namespace centrala
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        public Logs(AirData airData)
+        {
+            this.airData = airData;
+        }
+
         public void StartLogging()
         {
             if (SavingEnabled)
@@ -76,13 +82,10 @@ namespace centrala
         private void MyTimer_Tick(object sender, EventArgs e)
         {
             List<string> tempValues = new List<string>();
-            List<double> rawValues = new List<double>
-            {
-                AirData
-            }
+
             foreach(var index in CheckedIndices)
             {
-                tempValues.Add(AirData.ValuesList[index].Key.ToString());
+                tempValues.Add(airData.CurrentValues[index].ToString());
             }
             var joinedString = string.Join(";", tempValues);
             var time = Helpers.GetTimeStampPrecise(DateTime.Now);

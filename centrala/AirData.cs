@@ -79,6 +79,24 @@ namespace centrala
             }
         }
 
+        private List<double> _CurrentValues = new List<double>(new double[5]);
+        public List<double> CurrentValues
+        {
+            get
+            {
+                _CurrentValues[0] = SpeedIAS;
+                _CurrentValues[1] = Altitude;
+                _CurrentValues[2] = SpeedVertical;
+                _CurrentValues[3] = Temperature;
+                _CurrentValues[4] = SpeedTAS;
+                return _CurrentValues;
+            }
+            set
+            {
+                _CurrentValues = value;
+            }
+        }
+
         //private int ArchiveCount = 100;
         private ArchiveBuffer AltitudeArchive = new ArchiveBuffer();
         private ArchiveBuffer SpeedIASArchive = new ArchiveBuffer();

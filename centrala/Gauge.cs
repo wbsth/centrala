@@ -120,10 +120,13 @@ namespace centrala
             {
                 if (value > 40 && value < 480)
                 {
-                    tempRotation = (float)((value - 40) * speedConst);
-                    handSmall.Image = Helpers.RotateImage(Properties.Resources.wskazowka_mala_obrocona, tempRotation);
+                    tempRotation = (float)((value - 40) * speedConst);                  
                 }
-                else return;
+                else 
+                {
+                    tempRotation = 0;                
+                }
+                handSmall.Image = Helpers.RotateImage(Properties.Resources.wskazowka_mala_obrocona, tempRotation);
             }
             else if (_Type == IndicatorTypes.speedVertical)
             {
