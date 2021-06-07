@@ -17,6 +17,8 @@ namespace centrala
         private AirData airData;
         private Logs logs;
         private delegate void SafeCallDelegate(int val);
+        private object locker = new object();
+
         public MainForm()
         {
             InitializeComponent();
@@ -149,7 +151,8 @@ namespace centrala
             }
             else
             {
-                mainChart.Series[number].Points.DataBindY(airData.ArchivesList[number].Buffer);
+                var cpy = new List<double>(airData.ArchivesList[number].Buffer);
+                mainChart.Series[number].Points.DataBindY(cpy);
             }           
         }
 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO.Ports;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading;
 
 namespace centrala
 {
@@ -20,6 +21,8 @@ namespace centrala
         bool insideMessage;
 
         public bool PortOpen { get; set; }
+
+        private object locker = new object();
 
         // domyślne ustawienia
         private string _ComPort = "COM3";
@@ -74,18 +77,39 @@ namespace centrala
             return false;            
         }
 
-        private async void Port_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        private void Port_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            form.changeDataIndicator(true);
-            while(port.BytesToRead > 0)
+            try
             {
-                buffer.EnterValue((byte)port.ReadByte());
-                //tempBytes.Add((byte)port.ReadByte());
+                byte[] buff = new byte[port.BytesToRead];
+                int rcvdBytes = port.Read(buff, 0, buff.Length);
+                lock (locker)
+                {
+                    foreach(byte item in buff)
+                    {
+                        buffer.EnterValue(item);
+                    }
+                }
+                ThreadPool.QueueUserWorkItem(handleReceivedBytes);
             }
-            ProcessBuffor();
-            await Task.Delay(TimeSpan.FromMilliseconds(25));
-            form.changeDataIndicator(false);
+            catch(Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
+            }
+            //form.changeDataIndicator(true);
+            //while(port.BytesToRead > 0)
+            //{
+            //    buffer.EnterValue((byte)port.ReadByte());
+            //    //tempBytes.Add((byte)port.ReadByte());
+            //}
+            //ProcessBuffor();
+            //await Task.Delay(TimeSpan.FromMilliseconds(25));
+            //form.changeDataIndicator(false);
+        }
 
+        private void handleReceivedBytes(object state)
+        {
+            ProcessBuffor();
         }
 
         public void CloseConnection()
