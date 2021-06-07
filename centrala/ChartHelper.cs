@@ -10,9 +10,5 @@ namespace centrala
     {
         public static List<bool> CheckedValues { get; set; } = new List<bool>(new bool[5]);
 
-        private static int StoredValues = 100;
-
-
-
     }
 }

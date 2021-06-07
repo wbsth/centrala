@@ -18,5 +18,10 @@ namespace centrala
             Buffer.Add(val);
         }
 
+        public void ClearBuffer()
+        {
+            Buffer.Clear();
+        }
+
     }
 }

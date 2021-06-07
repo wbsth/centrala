@@ -98,7 +98,7 @@ namespace centrala
 
         private void ProcessBuffor()
         {
-            Console.WriteLine($"Read:{buffer.CurrentReadPosition}, Write:{buffer.CurrentWritePosition}");
+            //Console.WriteLine($"Read:{buffer.CurrentReadPosition}, Write:{buffer.CurrentWritePosition}");
             byte temp;
 
             while (true)
@@ -106,19 +106,19 @@ namespace centrala
                 temp = buffer.GetValue();
                 if (temp == '#')
                 {
-                    Console.WriteLine("# encountered");
+                    //Console.WriteLine("# encountered");
                     break;
                 }
                 if (temp == '$')
                 {
-                    Console.WriteLine("$ encountered");
+                    //Console.WriteLine("$ encountered");
                     insideMessage = true;
                 }
                 else if (insideMessage)
                 {
                     if (temp == '\n')
                     {
-                        Console.WriteLine("end of message");
+                        //Console.WriteLine("end of message");
                         MessageParser(Encoding.ASCII.GetString(tempByteList.ToArray()));
                         insideMessage = false;
                         tempByteList.Clear();
@@ -126,7 +126,7 @@ namespace centrala
                     else
                     {
                         tempByteList.Add(temp);
-                        Console.WriteLine(tempByteList.Count);
+                        //Console.WriteLine(tempByteList.Count);
                     }
                 }
             }
@@ -141,7 +141,7 @@ namespace centrala
             string[] splittedValues = message.Split(',');
             if(splittedValues.Length == 5)
             {
-                Console.WriteLine("Parsuje wiadomosc");
+                //Console.WriteLine("Parsuje wiadomosc");
                 airData.SpeedIAS = Helpers.ParseDoubleString(splittedValues[0]);
                 airData.Altitude = Helpers.ParseDoubleString(splittedValues[1]);
                 airData.SpeedVertical = Helpers.ParseDoubleString(splittedValues[2]);

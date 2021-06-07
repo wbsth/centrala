@@ -38,8 +38,6 @@ namespace centrala
             GaugeAltitude.DataBindings.Add(new Binding("GaugeValue", airData, "Altitude"));
             GaugeVerticalSpeed.DataBindings.Add(new Binding("GaugeValue", airData, "SpeedVertical"));
 
-            //mainChart.DataSource = airData.ArchivesList;
-            //mainChart.Series[0].YValueMembers = "[0].Buffer";//Points.DataBindY(airData.ArchivesList[0].Buffer);
             mainChart.Series[0].Points.DataBindY(airData.ArchivesList[0].Buffer);
 
             for (int i = 0; i < DataCheckbox.Items.Count; i++)
@@ -83,7 +81,7 @@ namespace centrala
                     logs.StartLogging();
                     chooseDataGroup.Enabled = false;
                     logGroup.Enabled = false;
-                    chartDataChoiceCheckbox.Enabled = false;
+                    //chartDataChoiceCheckbox.Enabled = false;
                 }
             }
             else
@@ -93,7 +91,7 @@ namespace centrala
                 logs.StopLogging();
                 chooseDataGroup.Enabled = true;
                 logGroup.Enabled = true;
-                chartDataChoiceCheckbox.Enabled = true;
+                //chartDataChoiceCheckbox.Enabled = true;
             }
         }
 
@@ -128,16 +126,6 @@ namespace centrala
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void chartDataChoiceCheckbox_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             ChartHelper.CheckedValues[e.Index] = (e.NewValue == CheckState.Checked);
@@ -165,5 +153,13 @@ namespace centrala
             }           
         }
 
+        private void ClearChartButton_Click(object sender, EventArgs e)
+        {
+            airData.ClearArchiveData();
+            for(int i = 0; i<5; i++)
+            {
+                UpdateChartBindingsSafe(i);
+            }
+        }
     }
 }

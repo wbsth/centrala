@@ -136,5 +136,13 @@ namespace centrala
                 SpeedTASArchive
             };   
         }
+
+        public void ClearArchiveData()
+        {
+            foreach(ArchiveBuffer item in ArchivesList)
+            {
+                item.ClearBuffer();
+            }
+        }
     }
 }

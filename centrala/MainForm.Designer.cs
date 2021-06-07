@@ -30,13 +30,13 @@ namespace centrala
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series22 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series23 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series24 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series25 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.plikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zakończToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,8 +70,7 @@ namespace centrala
             this.chartDataChoiceCheckbox = new System.Windows.Forms.CheckedListBox();
             this.mainChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.ClearChartButton = new System.Windows.Forms.Button();
             this.mainMenuStrip.SuspendLayout();
             this.connectionInfoBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataPicture)).BeginInit();
@@ -387,6 +386,7 @@ namespace centrala
             // 
             // chartBox
             // 
+            this.chartBox.Controls.Add(this.ClearChartButton);
             this.chartBox.Controls.Add(this.chartDataChoiceLabel);
             this.chartBox.Controls.Add(this.chartDataChoiceCheckbox);
             this.chartBox.Controls.Add(this.mainChart);
@@ -401,7 +401,7 @@ namespace centrala
             // 
             this.chartDataChoiceLabel.AutoSize = true;
             this.chartDataChoiceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.chartDataChoiceLabel.Location = new System.Drawing.Point(647, 121);
+            this.chartDataChoiceLabel.Location = new System.Drawing.Point(660, 87);
             this.chartDataChoiceLabel.Name = "chartDataChoiceLabel";
             this.chartDataChoiceLabel.Size = new System.Drawing.Size(124, 15);
             this.chartDataChoiceLabel.TabIndex = 1;
@@ -418,7 +418,7 @@ namespace centrala
             "W",
             "Temperatura",
             "TAS"});
-            this.chartDataChoiceCheckbox.Location = new System.Drawing.Point(664, 139);
+            this.chartDataChoiceCheckbox.Location = new System.Drawing.Point(675, 105);
             this.chartDataChoiceCheckbox.Name = "chartDataChoiceCheckbox";
             this.chartDataChoiceCheckbox.Size = new System.Drawing.Size(120, 90);
             this.chartDataChoiceCheckbox.TabIndex = 0;
@@ -426,47 +426,47 @@ namespace centrala
             // 
             // mainChart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.mainChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.mainChart.Legends.Add(legend1);
+            chartArea5.Name = "ChartArea1";
+            this.mainChart.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.mainChart.Legends.Add(legend5);
             this.mainChart.Location = new System.Drawing.Point(18, 34);
             this.mainChart.Name = "mainChart";
-            series1.BorderWidth = 2;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Enabled = false;
-            series1.Legend = "Legend1";
-            series1.Name = "SpeedIAS";
-            series2.BorderWidth = 2;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Enabled = false;
-            series2.Legend = "Legend1";
-            series2.Name = "Altitude";
-            series3.BorderWidth = 2;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Enabled = false;
-            series3.Legend = "Legend1";
-            series3.Name = "SpeedVertical";
-            series4.BorderWidth = 2;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.Enabled = false;
-            series4.Legend = "Legend1";
-            series4.Name = "Temperature";
-            series5.BorderWidth = 2;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series5.Enabled = false;
-            series5.Legend = "Legend1";
-            series5.Name = "SpeedTAS";
-            this.mainChart.Series.Add(series1);
-            this.mainChart.Series.Add(series2);
-            this.mainChart.Series.Add(series3);
-            this.mainChart.Series.Add(series4);
-            this.mainChart.Series.Add(series5);
+            series21.BorderWidth = 2;
+            series21.ChartArea = "ChartArea1";
+            series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series21.Enabled = false;
+            series21.Legend = "Legend1";
+            series21.Name = "SpeedIAS";
+            series22.BorderWidth = 2;
+            series22.ChartArea = "ChartArea1";
+            series22.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series22.Enabled = false;
+            series22.Legend = "Legend1";
+            series22.Name = "Altitude";
+            series23.BorderWidth = 2;
+            series23.ChartArea = "ChartArea1";
+            series23.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series23.Enabled = false;
+            series23.Legend = "Legend1";
+            series23.Name = "SpeedVertical";
+            series24.BorderWidth = 2;
+            series24.ChartArea = "ChartArea1";
+            series24.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series24.Enabled = false;
+            series24.Legend = "Legend1";
+            series24.Name = "Temperature";
+            series25.BorderWidth = 2;
+            series25.ChartArea = "ChartArea1";
+            series25.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series25.Enabled = false;
+            series25.Legend = "Legend1";
+            series25.Name = "SpeedTAS";
+            this.mainChart.Series.Add(series21);
+            this.mainChart.Series.Add(series22);
+            this.mainChart.Series.Add(series23);
+            this.mainChart.Series.Add(series24);
+            this.mainChart.Series.Add(series25);
             this.mainChart.Size = new System.Drawing.Size(612, 264);
             this.mainChart.TabIndex = 0;
             this.mainChart.Text = "chart1";
@@ -481,33 +481,21 @@ namespace centrala
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // ClearChartButton
             // 
-            this.button2.Location = new System.Drawing.Point(22, 413);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(68, 57);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(22, 476);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(68, 57);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.ClearChartButton.Location = new System.Drawing.Point(663, 201);
+            this.ClearChartButton.Name = "ClearChartButton";
+            this.ClearChartButton.Size = new System.Drawing.Size(121, 23);
+            this.ClearChartButton.TabIndex = 2;
+            this.ClearChartButton.Text = "Wyczyść wykres";
+            this.ClearChartButton.UseVisualStyleBackColor = true;
+            this.ClearChartButton.Click += new System.EventHandler(this.ClearChartButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1001, 621);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.chartBox);
             this.Controls.Add(this.valuesGroup);
@@ -568,15 +556,14 @@ namespace centrala
         private System.Windows.Forms.PictureBox DataPicture;
         private System.Windows.Forms.PictureBox StatusPicture;
         private Gauge GaugeSpeed;
-        private System.Windows.Forms.Button button1;
         private Gauge GaugeVerticalSpeed;
         private Gauge GaugeAltitude;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private TextGauge TASTextGauge;
         private TextGauge TemperatureTextGauge;
         private System.Windows.Forms.Label chartDataChoiceLabel;
         private System.Windows.Forms.CheckedListBox chartDataChoiceCheckbox;
         private System.Windows.Forms.DataVisualization.Charting.Chart mainChart;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ClearChartButton;
     }
 }
