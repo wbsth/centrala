@@ -27,11 +27,12 @@ namespace centrala
         private void MainForm_Load(object sender, EventArgs e)
         {
             airData = new AirData(this);
-            serial = new SerialConnection(this, airData);
             logs = new Logs(airData);
+            serial = new SerialConnection(this, airData, logs);
+
 
             portValue.DataBindings.Add(new Binding("Text", serial, "ComPort"));
-            intervalValue.DataBindings.Add(new Binding("Value", logs, "SavingInterval"));
+            //intervalValue.DataBindings.Add(new Binding("Value", logs, "SavingInterval"));
             intervalCheckbox.DataBindings.Add(new Binding("Checked", logs, "SavingEnabled"));
 
             TemperatureTextGauge.DataBindings.Add(new Binding("ValValue", airData, "Temperature"));

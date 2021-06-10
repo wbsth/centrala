@@ -14,6 +14,7 @@ namespace centrala
     {
         SerialPort port;
         AirData airData;
+        Logs logs;
         CircleBuffer buffer;
         List<byte> tempBytes = new List<byte>();
         private readonly MainForm form;
@@ -50,10 +51,11 @@ namespace centrala
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public SerialConnection(MainForm mainForm, AirData airData)
+        public SerialConnection(MainForm mainForm, AirData airData, Logs logs)
         {
-            this.form = mainForm;
+            form = mainForm;
             this.airData = airData;
+            this.logs = logs;
             buffer = new CircleBuffer(2048);
             tempByteList = new List<byte>();
             insideMessage = false;
@@ -171,7 +173,7 @@ namespace centrala
                 airData.SpeedVertical = Helpers.ParseDoubleString(splittedValues[2]);
                 airData.Temperature = Helpers.ParseDoubleString(splittedValues[3]);
                 airData.SpeedTAS = Helpers.ParseDoubleString(splittedValues[4]);
-
+                logs.MyTimer_Tick();
             }
 
         }

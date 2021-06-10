@@ -11,7 +11,7 @@ namespace centrala
 {
     public class Logs : INotifyPropertyChanged
     {
-        static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
+        //static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
 
         private AirData airData;
         private StreamWriter streamWriter;
@@ -58,14 +58,14 @@ namespace centrala
         {
             if (SavingEnabled)
             {
-                myTimer.Interval = (int)(SavingInterval * 1000);
+                //myTimer.Interval = (int)(SavingInterval * 1000);
 
                 string timestamp = Helpers.GetTimestamp(DateTime.Now);
                 streamWriter = new StreamWriter($"{timestamp}.csv", false);
                 PrepareHeader();
 
-                myTimer.Tick += MyTimer_Tick;
-                myTimer.Start();
+                //myTimer.Tick += MyTimer_Tick;
+                //myTimer.Start();
             }
         }
 
@@ -73,23 +73,30 @@ namespace centrala
         {
             if (SavingEnabled)
             {
-                myTimer.Stop();
+                //myTimer.Stop();
                 streamWriter.Close();
                 CheckedIndices.Clear();
             }
         }
 
-        private void MyTimer_Tick(object sender, EventArgs e)
+        public void MyTimer_Tick()
         {
-            List<string> tempValues = new List<string>();
-
-            foreach(var index in CheckedIndices)
+            try
             {
-                tempValues.Add(airData.CurrentValues[index].ToString());
+                List<string> tempValues = new List<string>();
+
+                foreach (var index in CheckedIndices)
+                {
+                    tempValues.Add(airData.CurrentValues[index].ToString());
+                }
+                var joinedString = string.Join(";", tempValues);
+                var time = Helpers.GetTimeStampPrecise(DateTime.Now);
+                streamWriter.WriteLine($"{time};{joinedString}");
             }
-            var joinedString = string.Join(";", tempValues);
-            var time = Helpers.GetTimeStampPrecise(DateTime.Now);
-            streamWriter.WriteLine($"{time};{joinedString}");
+            catch(Exception ex)
+            {
+
+            }
         }
 
         private void PrepareHeader()
