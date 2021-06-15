@@ -23,8 +23,8 @@ namespace centrala
             get { return _Altitude; }
             set
             {
-                if (Equals(value, _Altitude)) return;
-                _Altitude = value;
+                if (!Equals(value, _Altitude))
+                    _Altitude = value;
                 AltitudeArchive.EnterValue(value);
                 form.UpdateChartBindingsSafe(1);
                 OnPropertyChanged();
@@ -35,8 +35,8 @@ namespace centrala
             get { return _SpeedIAS; }
             set
             {
-                if (Equals(value, _SpeedIAS)) return;
-                _SpeedIAS = value;
+                if (!Equals(value, _SpeedIAS))
+                    _SpeedIAS = value;
                 SpeedIASArchive.EnterValue(value);
                 form.UpdateChartBindingsSafe(0);
                 OnPropertyChanged();
@@ -47,8 +47,8 @@ namespace centrala
             get { return _SpeedTAS; }
             set
             {
-                if (Equals(value, _SpeedTAS)) return;
-                _SpeedTAS = value;
+                if (!Equals(value, _SpeedTAS))
+                    _SpeedTAS = value;
                 SpeedTASArchive.EnterValue(value);
                 form.UpdateChartBindingsSafe(4);
                 OnPropertyChanged();
@@ -59,8 +59,8 @@ namespace centrala
             get { return _SpeedVertical; }
             set
             {
-                if (Equals(value, _SpeedVertical)) return;
-                _SpeedVertical = value;
+                if (!Equals(value, _SpeedVertical))
+                    _SpeedVertical = value;
                 SpeedVerticalArchive.EnterValue(value);
                 form.UpdateChartBindingsSafe(2);
                 OnPropertyChanged();
@@ -71,8 +71,8 @@ namespace centrala
             get { return _Temperature; }
             set
             {
-                if (Equals(value, _Temperature)) return;
-                _Temperature = value;
+                if (!Equals(value, _Temperature))
+                    _Temperature = value;
                 TemperatureArchive.EnterValue(value);
                 form.UpdateChartBindingsSafe(3);
                 OnPropertyChanged();
