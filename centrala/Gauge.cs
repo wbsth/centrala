@@ -105,9 +105,13 @@ namespace centrala
             }
             else
             {
+                string tempVal;
                 if (!this.Enabled) return;
-                gaugeValueLabel.Text = $"{_GaugeValue} {unit}";
-                // update rotation
+                if (_Type == IndicatorTypes.speedVertical)
+                    tempVal = $"{_GaugeValue:0.#}";
+                else
+                    tempVal = $"{_GaugeValue:0.}";
+                gaugeValueLabel.Text = $"{tempVal} {unit}";
                 Rotate(_GaugeValue);
             }
         }

@@ -41,7 +41,7 @@ namespace centrala
             GaugeAltitude.DataBindings.Add(new Binding("GaugeValue", airData, "Altitude"));
             GaugeVerticalSpeed.DataBindings.Add(new Binding("GaugeValue", airData, "SpeedVertical"));
 
-            mainChart.Series[0].Points.DataBindY(airData.ArchivesList[0].Buffer);
+            mainChart.ChartAreas.First().AxisX.LabelStyle.Format = "mm:ss";            
 
             for (int i = 0; i < DataCheckbox.Items.Count; i++)
             {
@@ -118,9 +118,9 @@ namespace centrala
 
         public void changeDataIndicator(bool status)
         {
-            if (status)
+            if (status && DataPicture.Image == Properties.Resources.red)
                 DataPicture.Image = Properties.Resources.green;
-            else
+            else if(DataPicture.Image == Properties.Resources.green)
                 DataPicture.Image = Properties.Resources.red;
         }
 
@@ -152,8 +152,10 @@ namespace centrala
             }
             else
             {
-                var cpy = new List<double>(airData.ArchivesList[number].Buffer);
-                mainChart.Series[number].Points.DataBindY(cpy);
+                var cpyY = new List<double>(airData.ArchivesList[number].Buffer);
+                var cpyX = new List<DateTime>(airData.TimeBuffer.DateBuffer);
+                if(cpyY.Count == cpyX.Count)
+                    mainChart.Series[number].Points.DataBindXY(cpyX,cpyY);
             }           
         }
 
@@ -164,6 +166,11 @@ namespace centrala
             {
                 UpdateChartBindingsSafe(i);
             }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            logs.StopLogging();
         }
     }
 }

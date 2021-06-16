@@ -62,7 +62,16 @@ namespace centrala
             {
                 if (Equals(value, _ValValue)) return;
                 _ValValue = value;
-                UpdateSafe(ValueResult, value.ToString());
+                string tempString;
+                if (_GaugeType == TextGaugesTypes.TAS)
+                {
+                    tempString = $"{value:0.}";
+                }
+                else
+                {
+                    tempString = $"{value:0.#}";
+                }
+                UpdateSafe(ValueResult, tempString);
             }
         }
 
@@ -106,7 +115,7 @@ namespace centrala
                 label.Invoke(d, new object[] { label, val });
             }
             else
-                label.Text = val;
+                label.Text = val;             
         }
 
     }

@@ -8,8 +8,19 @@ namespace centrala
 {
     public class ArchiveBuffer
     {
-        private static int BufferSize = 100;
+        private int BufferSize = 100;
+        private bool IsTimeBuffer = false;
+
+        private object locker = new object();
+
         public List<double> Buffer = new List<double>();
+        public List<DateTime> DateBuffer = new List<DateTime>();
+
+        public ArchiveBuffer(bool isTime = false)
+        {
+            if (isTime)
+                IsTimeBuffer = true;
+        }
 
         public void EnterValue(double val)
         {
@@ -18,9 +29,19 @@ namespace centrala
             Buffer.Add(val);
         }
 
+        public void EnterValue(DateTime time)
+        {
+            if (DateBuffer.Count >= BufferSize)
+                DateBuffer.RemoveAt(0);
+            DateBuffer.Add(time);
+        }
+
         public void ClearBuffer()
         {
-            Buffer.Clear();
+            if(IsTimeBuffer)
+                DateBuffer.Clear();
+            else
+                Buffer.Clear();
         }
 
     }

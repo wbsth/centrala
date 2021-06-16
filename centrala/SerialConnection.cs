@@ -16,6 +16,9 @@ namespace centrala
         AirData airData;
         Logs logs;
         CircleBuffer buffer;
+        
+        public DateTime lastMessageTime;
+
         List<byte> tempBytes = new List<byte>();
         private readonly MainForm form;
         List<byte> tempByteList;
@@ -111,6 +114,7 @@ namespace centrala
 
         private void handleReceivedBytes(object state)
         {
+            lastMessageTime = DateTime.Now;
             ProcessBuffor();
         }
 
@@ -168,6 +172,7 @@ namespace centrala
             if(splittedValues.Length == 5)
             {
                 //Console.WriteLine("Parsuje wiadomosc");
+                airData.TimeBuffer.EnterValue(DateTime.Now);
                 airData.SpeedIAS = Helpers.ParseDoubleString(splittedValues[0]);
                 airData.Altitude = Helpers.ParseDoubleString(splittedValues[1]);
                 airData.SpeedVertical = Helpers.ParseDoubleString(splittedValues[2]);

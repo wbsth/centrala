@@ -97,12 +97,12 @@ namespace centrala
             }
         }
 
-        //private int ArchiveCount = 100;
         private ArchiveBuffer AltitudeArchive = new ArchiveBuffer();
         private ArchiveBuffer SpeedIASArchive = new ArchiveBuffer();
         private ArchiveBuffer SpeedTASArchive = new ArchiveBuffer();
         private ArchiveBuffer SpeedVerticalArchive = new ArchiveBuffer();
         private ArchiveBuffer TemperatureArchive = new ArchiveBuffer();
+        public ArchiveBuffer TimeBuffer = new ArchiveBuffer(true);
 
         public List<ArchiveBuffer> ArchivesList;
 
@@ -133,7 +133,8 @@ namespace centrala
                 AltitudeArchive,
                 SpeedVerticalArchive,
                 TemperatureArchive,
-                SpeedTASArchive
+                SpeedTASArchive,
+                TimeBuffer
             };   
         }
 
